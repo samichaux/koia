@@ -1079,9 +1079,7 @@ function Index() {
           <RevealOnScroll>
             <Eyebrow>Questions</Eyebrow>
           </RevealOnScroll>
-          <RevealOnScroll>
-            <AccentHeadline before="Ce que tu veux" accent="savoir" />
-          </RevealOnScroll>
+          <WordReveal text="Ce que tu veux savoir" />
           <div className="mt-12 max-w-[860px]">
             <FaqAccordion items={faqs} />
           </div>
