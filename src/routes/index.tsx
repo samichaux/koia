@@ -164,9 +164,77 @@ function AccentHeadline({
 }
 
 function IPhoneMockup() {
+  const messages = [
+    { from: "koia", text: "Salut ! Prête pour ton Full Body A ?", delay: 500 },
+    { from: "user", text: "Oui mais j'ai une douleur au genou droit depuis hier", delay: 1800 },
+    {
+      from: "koia",
+      text: "Ok. Je retire le squat bulgare et je le remplace par du hip thrust — pas de flexion profonde aujourd'hui.",
+      delay: 3200,
+    },
+    {
+      from: "koia",
+      text: "Le reste du programme est maintenu, RPE cible à 6 au lieu de 8. Si la douleur persiste demain, consulte.",
+      delay: 4200,
+    },
+    { from: "user", text: "Nickel 👍", delay: 5500 },
+  ] as const;
+
+  const TYPING_MS = 600;
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const [started, setStarted] = useState(false);
+  const [shown, setShown] = useState(0);
+  const [typingFor, setTypingFor] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            setStarted(true);
+            io.disconnect();
+          }
+        }
+      },
+      { threshold: 0.3 },
+    );
+    io.observe(containerRef.current);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!started) return;
+    const timers: number[] = [];
+    messages.forEach((m, i) => {
+      const showAt = m.delay;
+      const typingAt = Math.max(0, showAt - TYPING_MS);
+      timers.push(window.setTimeout(() => setTypingFor(i), typingAt));
+      timers.push(
+        window.setTimeout(() => {
+          setTypingFor((cur) => (cur === i ? null : cur));
+          setShown((s) => Math.max(s, i + 1));
+        }, showAt),
+      );
+    });
+    return () => timers.forEach(clearTimeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [started]);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [shown, typingFor]);
+
+  const activeTyping = typingFor !== null && typingFor >= shown ? typingFor : null;
+  const typingSide = activeTyping !== null ? messages[activeTyping].from : null;
+
   return (
     <div
-      className="relative mx-auto"
+      ref={containerRef}
+      className="relative mx-auto max-md:!w-[240px] max-md:!h-[520px]"
       style={{
         width: 280,
         height: 580,
@@ -175,92 +243,149 @@ function IPhoneMockup() {
         background: "#070C17",
         overflow: "hidden",
         boxShadow: "0 20px 60px rgba(4,7,15,0.6)",
-        animation: "koia-float 6s ease-in-out infinite",
       }}
     >
-      {/* Notch */}
-      <div
-        aria-hidden
-        className="absolute left-1/2 top-0 -translate-x-1/2"
-        style={{
-          width: 100,
-          height: 28,
-          background: "#04070F",
-          borderRadius: "0 0 16px 16px",
-        }}
-      />
-      <div className="flex h-full flex-col px-5 pt-12 pb-4">
-        {/* Top bar */}
-        <div className="flex items-center justify-center gap-2 pb-4">
-          <span className="h-2 w-2 rounded-full bg-[#C2001E]" />
-          <span className="text-sm font-medium text-[#EEF0F8]">Koia</span>
+      <div className="flex h-full flex-col">
+        {/* Status bar */}
+        <div
+          className="flex items-center justify-between"
+          style={{ height: 44, padding: "12px 20px" }}
+        >
+          <span className="text-xs font-medium text-[#EEF0F8]" style={{ fontFamily: "Inter, sans-serif" }}>
+            9:41
+          </span>
+          <div className="flex items-center gap-1">
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#4A5872" }} />
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#4A5872" }} />
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#4A5872" }} />
+          </div>
         </div>
 
-        {/* Chat */}
-        <div className="flex-1 space-y-3 overflow-hidden">
-          <div>
-            <div className="mb-1 text-[10px] font-normal text-[#4A5872]">Koia</div>
-            <div
-              className="max-w-[85%] px-3 py-2 text-[11px] font-light leading-snug text-[#EEF0F8]"
-              style={{ background: "#0E1525", borderRadius: "12px 12px 12px 4px" }}
-            >
-              Salut ! Je suis ton coach. On commence par quelques questions pour construire ton programme.
-            </div>
+        {/* Chat header */}
+        <div
+          className="flex items-center gap-2.5"
+          style={{ padding: "8px 16px", borderBottom: "1px solid #1E2A40" }}
+        >
+          <div
+            className="flex items-center justify-center"
+            style={{
+              width: 32,
+              height: 32,
+              borderRadius: "50%",
+              background: "#0E1525",
+              color: "#C2001E",
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 500,
+              fontSize: 14,
+            }}
+          >
+            K
           </div>
-
-          <div className="flex justify-end">
-            <div
-              className="max-w-[85%] px-3 py-2 text-[11px] font-light leading-snug text-[#EEF0F8]"
-              style={{ background: "#141D30", borderRadius: "12px 12px 4px 12px" }}
-            >
-              J'ai 10 ans d'expérience, objectif recomp, j'ai mal au genou droit
-            </div>
-          </div>
-
-          <div>
-            <div className="mb-1 text-[10px] font-normal text-[#4A5872]">Koia</div>
-            <div
-              className="max-w-[90%] px-3 py-2 text-[11px] font-light leading-snug text-[#EEF0F8]"
-              style={{ background: "#0E1525", borderRadius: "12px 12px 12px 4px" }}
-            >
-              Noté. Avec ton historique, on part sur un full body 3×/sem. Pour le genou : pas de squat profond, on remplace par hip thrust et leg press partiel. RPE cible 7.
-            </div>
-          </div>
-
-          <div>
-            <div
-              className="max-w-[90%] px-3 py-2 text-[11px] font-light leading-snug text-[#EEF0F8]"
-              style={{ background: "#0E1525", borderRadius: "12px 12px 12px 4px" }}
-            >
-              Je t'explique : le hip thrust charge les fessiers sans contrainte de flexion sur le genou.
-            </div>
-            <span
-              className="mt-1.5 inline-block rounded-full px-2 py-0.5 text-[9px] font-normal text-[#4A5872]"
-              style={{
-                background: "rgba(194,0,30,0.06)",
-                border: "1px solid rgba(194,0,30,0.15)",
-              }}
-            >
-              [Source : Contreras et al. 2020]
+          <div className="flex flex-col leading-tight">
+            <span className="text-sm font-medium text-[#EEF0F8]" style={{ fontFamily: "Inter, sans-serif" }}>
+              Koia
             </span>
+            <span
+              className="flex items-center gap-1 text-xs text-[#4A5872]"
+              style={{ fontFamily: "Inter, sans-serif", fontWeight: 300 }}
+            >
+              <span
+                className="inline-block rounded-full"
+                style={{ width: 6, height: 6, background: "#C2001E" }}
+              />
+              En ligne
+            </span>
+          </div>
+        </div>
+
+        {/* Messages */}
+        <div
+          ref={scrollRef}
+          className="flex-1 overflow-hidden"
+          style={{ padding: 16 }}
+        >
+          <div className="flex flex-col gap-2">
+            {messages.map((m, i) => {
+              const visible = i < shown;
+              if (!visible) return null;
+              const isUser = m.from === "user";
+              return (
+                <div key={i} className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
+                  <div
+                    style={{
+                      background: isUser ? "#141D30" : "#0E1525",
+                      color: "#EEF0F8",
+                      borderRadius: 12,
+                      padding: "10px 14px",
+                      maxWidth: "85%",
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 300,
+                      fontSize: 12,
+                      lineHeight: 1.4,
+                      animation: "koia-msg-in 400ms cubic-bezier(0.16,1,0.3,1) both",
+                    }}
+                  >
+                    {m.text}
+                  </div>
+                </div>
+              );
+            })}
+            {activeTyping !== null && (
+              <div className={`flex ${typingSide === "user" ? "justify-end" : "justify-start"}`}>
+                <div
+                  className="flex items-center gap-1"
+                  style={{
+                    background: typingSide === "user" ? "#141D30" : "#0E1525",
+                    borderRadius: 12,
+                    padding: "10px 14px",
+                  }}
+                >
+                  {[0, 1, 2].map((d) => (
+                    <span
+                      key={d}
+                      className="inline-block rounded-full"
+                      style={{
+                        width: 4,
+                        height: 4,
+                        background: "#4A5872",
+                        animation: `koia-typing 1.2s ease-in-out ${d * 0.15}s infinite`,
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
         {/* Input bar */}
         <div
-          className="mt-3 flex items-center gap-2 px-3 py-2"
-          style={{ background: "#0E1525", borderRadius: 20 }}
+          className="flex items-center gap-2"
+          style={{ padding: "10px 16px", borderTop: "1px solid #1E2A40" }}
         >
-          <span className="flex-1 text-[11px] text-[#1A2338]">Écris à ton coach...</span>
+          <div
+            className="flex-1"
+            style={{
+              background: "#0E1525",
+              borderRadius: 20,
+              padding: "8px 16px",
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 300,
+              fontSize: 12,
+              color: "#1A2338",
+            }}
+          >
+            Écris à ton coach...
+          </div>
           <button
             type="button"
             aria-hidden
-            className="flex h-7 w-7 items-center justify-center rounded-full text-white"
-            style={{ background: "#C2001E" }}
+            className="flex items-center justify-center"
+            style={{ width: 28, height: 28, borderRadius: "50%", background: "#C2001E", color: "#fff" }}
           >
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
+              <polyline points="13 6 19 12 13 18" />
             </svg>
           </button>
         </div>
