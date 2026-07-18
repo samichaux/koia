@@ -95,26 +95,71 @@ function WordReveal({
 }
 
 function MotivationalDivider() {
+  const { ref, visible } = useInView<HTMLDivElement>(0.3);
+  const line1 = "ARRÊTE DE DEVINER.".split(" ");
+  const line2 = "COMMENCE À COMPRENDRE.".split(" ");
+  const line1Duration = line1.length * 100;
+  const beatPause = 400;
   return (
-    <section className="py-16 koia-motiv">
-      <div className="mx-auto max-w-[1200px] px-6 text-center">
-        <WordReveal
-          text="ARRÊTE DE DEVINER."
-          size=""
-          color="#2A3654"
-        />
-        <div className="mt-2">
-          <WordReveal
-            text="COMMENCE À COMPRENDRE."
-            size=""
-            gradient
+    <section className="py-16 koia-motiv" ref={ref}>
+      <div className="relative mx-auto max-w-[1200px] px-6 text-center">
+        <h2 className="uppercase" style={{ ...bebas, color: "#2A3448", lineHeight: 0.95, letterSpacing: "0.02em" }}>
+          {line1.map((w, i) => (
+            <span key={i} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.25em", paddingBottom: "0.05em" }}>
+              <span
+                style={{
+                  display: "inline-block",
+                  transform: visible ? "translateY(0)" : "translateY(100%)",
+                  opacity: visible ? 1 : 0,
+                  transition: `transform 500ms ${easing} ${i * 100}ms, opacity 500ms ${easing} ${i * 100}ms`,
+                }}
+              >
+                {w}
+              </span>
+            </span>
+          ))}
+        </h2>
+        <div className="relative mt-2">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
+            style={{ width: 400, height: 60, background: "rgba(194,0,30,0.08)", filter: "blur(60px)" }}
           />
+          <h2 className="relative uppercase" style={{ ...bebas, lineHeight: 0.95, letterSpacing: "0.02em" }}>
+            {line2.map((w, i) => (
+              <span key={i} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.25em", paddingBottom: "0.05em" }}>
+                <span
+                  style={{
+                    display: "inline-block",
+                    transform: visible ? "translateY(0)" : "translateY(100%)",
+                    opacity: visible ? 1 : 0,
+                    transition: `transform 500ms ${easing} ${line1Duration + beatPause + i * 70}ms, opacity 500ms ${easing} ${line1Duration + beatPause + i * 70}ms`,
+                    backgroundImage: "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
+                    WebkitBackgroundClip: "text",
+                    backgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    color: "transparent",
+                  }}
+                >
+                  {w}
+                </span>
+              </span>
+            ))}
+          </h2>
         </div>
       </div>
       <style>{`
         .koia-motiv h2 { font-size: clamp(2.5rem, 7vw, 5rem); text-align: center; }
       `}</style>
     </section>
+  );
+}
+
+function PulseLine() {
+  return (
+    <div aria-hidden className="mx-auto max-w-[1200px] px-6">
+      <div className="koia-pulse-line" />
+    </div>
   );
 }
 
