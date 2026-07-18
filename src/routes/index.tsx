@@ -572,12 +572,12 @@ function Index() {
         <div
           aria-hidden
           className="absolute bottom-8 left-1/2 -translate-x-1/2 h-10 w-px overflow-hidden"
-          style={{ background: "#1A2338" }}
+          style={{ background: "linear-gradient(180deg, #FF2D4B, #7A0012)" }}
         >
           <div
             className="h-2 w-px"
             style={{
-              background: "#EEF0F8",
+              background: "#C2001E",
               animation: "koia-scroll-dot 2.4s ease-in-out infinite",
             }}
           />
@@ -585,7 +585,7 @@ function Index() {
       </section>
 
       {/* PROBLEM */}
-      <section className="border-t border-[#1E2A40]">
+      <section className="koia-section-divider">
         <div className="mx-auto max-w-[1200px] px-6 py-24">
           <RevealOnScroll>
             <Eyebrow>Le problème</Eyebrow>
@@ -626,7 +626,7 @@ function Index() {
       </section>
 
       {/* DIFFERENCE — Bento */}
-      <section className="border-t border-[#1E2A40]">
+      <section className="koia-section-divider">
         <div className="mx-auto max-w-[1200px] px-6 py-24">
           <RevealOnScroll>
             <Eyebrow>La différence</Eyebrow>
@@ -735,7 +735,7 @@ function Index() {
       </section>
 
       {/* CREDIBILITY */}
-      <section className="border-t border-[#1E2A40]">
+      <section className="koia-section-divider">
         <div className="mx-auto max-w-[1200px] px-6 py-20">
           <RevealOnScroll>
             <Eyebrow>Les fondations</Eyebrow>
@@ -756,7 +756,7 @@ function Index() {
       </section>
 
       {/* FAQ */}
-      <section className="border-t border-[#1E2A40]">
+      <section className="koia-section-divider">
         <div className="mx-auto max-w-[1200px] px-6 py-24">
           <RevealOnScroll>
             <Eyebrow>Questions</Eyebrow>
@@ -771,7 +771,7 @@ function Index() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="relative border-t border-[#1E2A40] overflow-hidden">
+      <section className="relative koia-section-divider overflow-hidden">
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full"
@@ -809,7 +809,7 @@ function Index() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-[#1E2A40]">
+      <footer className="koia-section-divider">
         <div className="mx-auto max-w-[1200px] px-6 py-12 text-center text-xs font-light text-[#1A2338]">
           © 2026 KOIA
         </div>
