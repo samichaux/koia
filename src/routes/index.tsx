@@ -321,7 +321,7 @@ function IPhoneMockup() {
               className="font-medium text-[#EEF0F8]"
               style={{ fontFamily: "Inter, sans-serif", fontSize: 11 }}
             >
-              Koia
+              KOIA
             </span>
             <span
               className="flex items-center gap-1 text-[#4A5872]"
@@ -391,7 +391,7 @@ function IPhoneMockup() {
                   <div
                     style={{
                       background: isUser
-                        ? "linear-gradient(135deg, rgba(255, 45, 75, 0.22) 0%, rgba(194, 0, 30, 0.16) 40%, rgba(122, 0, 18, 0.12) 100%)"
+                        ? "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)"
                         : "#141E30",
                       color: "#EEF0F8",
                       borderRadius: isUser ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
@@ -422,7 +422,7 @@ function IPhoneMockup() {
                   style={{
                     background:
                       typingSide === "user"
-                        ? "linear-gradient(135deg, rgba(255, 45, 75, 0.22) 0%, rgba(194, 0, 30, 0.16) 40%, rgba(122, 0, 18, 0.12) 100%)"
+                        ? "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)"
                         : "#141E30",
                     borderRadius: typingSide === "user" ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
                     padding: "8px 12px",
