@@ -203,6 +203,8 @@ function IPhoneMockup() {
   const [started, setStarted] = useState(false);
   const [shown, setShown] = useState(0);
   const [typingFor, setTypingFor] = useState<number | null>(null);
+  const [fading, setFading] = useState(false);
+  const [cycle, setCycle] = useState(0);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -235,9 +237,25 @@ function IPhoneMockup() {
         }, showAt),
       );
     });
+
+    const lastDelay = messages[messages.length - 1].delay;
+    timers.push(
+      window.setTimeout(() => {
+        setFading(true);
+      }, lastDelay + 3000),
+    );
+    timers.push(
+      window.setTimeout(() => {
+        setShown(0);
+        setTypingFor(null);
+        setFading(false);
+        setCycle((c) => c + 1);
+      }, lastDelay + 3000 + 600 + 1000),
+    );
+
     return () => timers.forEach(clearTimeout);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [started]);
+  }, [started, cycle]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -324,7 +342,13 @@ function IPhoneMockup() {
           className="flex-1 overflow-hidden"
           style={{ padding: 16 }}
         >
-          <div className="flex flex-col">
+          <div
+            className="flex flex-col"
+            style={{
+              opacity: fading ? 0 : 1,
+              transition: "opacity 600ms ease",
+            }}
+          >
             {messages.map((m, i) => {
               const visible = i < shown;
               if (!visible) return null;
@@ -338,8 +362,8 @@ function IPhoneMockup() {
                   className={`flex items-end ${isUser ? "flex-row-reverse" : "flex-row"}`}
                   style={{
                     marginBottom: isContinuation ? 3 : 6,
-                    marginLeft: !isUser && !showAvatar ? 26 : 0,
-                    marginRight: isUser && !showAvatar ? 26 : 0,
+                    alignSelf: isUser ? "flex-end" : "flex-start",
+                    maxWidth: "72%",
                     gap: 6,
                   }}
                 >
@@ -364,11 +388,11 @@ function IPhoneMockup() {
                   )}
                   <div
                     style={{
-                      background: isUser ? "rgba(194, 0, 30, 0.12)" : "#0E1525",
+                      background: isUser ? "rgba(194, 0, 30, 0.18)" : "#141E30",
                       color: "#EEF0F8",
                       borderRadius: isUser ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
                       padding: "8px 12px",
-                      maxWidth: "78%",
+                      maxWidth: "100%",
                       fontFamily: "Inter, sans-serif",
                       fontWeight: 300,
                       fontSize: 10,
@@ -384,12 +408,15 @@ function IPhoneMockup() {
             {activeTyping !== null && (
               <div
                 className={`flex ${typingSide === "user" ? "justify-end" : "justify-start"}`}
-                style={{ marginBottom: 6 }}
+                style={{
+                  marginBottom: 6,
+                  alignSelf: typingSide === "user" ? "flex-end" : "flex-start",
+                }}
               >
-                  <div
-                    className="flex items-center gap-1"
-                    style={{
-                      background: typingSide === "user" ? "rgba(194, 0, 30, 0.12)" : "#0E1525",
+                <div
+                  className="flex items-center gap-1"
+                  style={{
+                    background: typingSide === "user" ? "rgba(194, 0, 30, 0.18)" : "#141E30",
                     borderRadius: typingSide === "user" ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
                     padding: "8px 12px",
                   }}
