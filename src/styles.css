@@ -4,6 +4,30 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-display: "Bebas Neue", sans-serif;
+  --font-sans: "Inter", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-koia-navy: #0A0F1C;
+  --color-koia-navy-2: #0E1424;
+  --color-koia-card: #141926;
+  --color-koia-border: #1E2433;
+  --color-koia-crimson: #C2001E;
+  --color-koia-text: #F5F5F5;
+  --color-koia-muted: #8A8F98;
+  --color-koia-footer: #4A4F5C;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0A0F1C;
+  color: #F5F5F5;
+  font-family: "Inter", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
 /*
  * Design system definition.
  *
