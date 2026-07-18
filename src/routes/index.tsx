@@ -1094,7 +1094,7 @@ function Index() {
           style={{ background: "rgba(194,0,30,0.04)", filter: "blur(100px)" }}
         />
         <div className="relative mx-auto max-w-[900px] px-6 py-32 text-center">
-          <RevealOnScroll>
+          <ScaleReveal>
             <h2
               className="uppercase text-[#EEF0F8]"
               style={{
@@ -1110,7 +1110,7 @@ function Index() {
               <span>MENT</span>{" "}
               pas ?
             </h2>
-          </RevealOnScroll>
+          </ScaleReveal>
           <RevealOnScroll delay={100}>
             <div className="mt-10">
               <EmailWaitlistForm idPrefix="final" align="center" />
