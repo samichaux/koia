@@ -1,16 +1,43 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type FaqItem = { q: string; a: string };
 
 export function FaqAccordion({ items }: { items: FaqItem[] }) {
   const [open, setOpen] = useState<number | null>(null);
+  const listRef = useRef<HTMLDivElement | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (!listRef.current) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            setVisible(true);
+            io.disconnect();
+          }
+        }
+      },
+      { threshold: 0.2 },
+    );
+    io.observe(listRef.current);
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <div className="border-t border-[#1E2A40]">
+    <div ref={listRef} className="border-t border-[#1E2A40]">
       {items.map((item, i) => {
         const isOpen = open === i;
         return (
-          <div key={i} className="border-b border-[#1E2A40]">
+          <div
+            key={i}
+            className="border-b border-[#1E2A40]"
+            style={{
+              opacity: visible ? 1 : 0,
+              transform: visible ? "translateX(0)" : "translateX(20px)",
+              transition: `opacity 400ms cubic-bezier(0.16,1,0.3,1) ${i * 80}ms, transform 400ms cubic-bezier(0.16,1,0.3,1) ${i * 80}ms`,
+            }}
+          >
             <h3>
               <button
                 type="button"
