@@ -784,7 +784,7 @@ function Index() {
         (entries) => {
           for (const e of entries) {
             if (e.isIntersecting) {
-              setTimeout(() => setVisibleProblems((s) => new Set(s).add(i)), i * 150);
+              setTimeout(() => setVisibleProblems((s) => new Set(s).add(i)), i * 200);
               io.disconnect();
             }
           }
