@@ -6,11 +6,11 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <div className="border-t border-white/[0.06]">
+    <div className="border-t border-[#1E2A40]">
       {items.map((item, i) => {
         const isOpen = open === i;
         return (
-          <div key={i} className="border-b border-white/[0.06]">
+          <div key={i} className="border-b border-[#1E2A40]">
             <h3>
               <button
                 type="button"
@@ -18,12 +18,12 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
                 onClick={() => setOpen(isOpen ? null : i)}
                 className="flex w-full items-center justify-between gap-6 py-6 text-left group"
               >
-                <span className="font-normal text-base text-[#E8E8E8]">
+                <span className="font-normal text-base text-[#EEF0F8]">
                   {item.q}
                 </span>
                 <span
                   aria-hidden
-                  className={`shrink-0 text-2xl leading-none text-[#3D4450] transition-transform duration-300 ${
+                  className={`shrink-0 text-2xl leading-none text-[#1A2338] transition-transform duration-300 ${
                     isOpen ? "rotate-45" : ""
                   }`}
                   style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
@@ -41,7 +41,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
               style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
             >
               <div className="min-h-0">
-                <p className="max-w-[680px] font-light leading-relaxed text-base text-[#6B7280]">
+                <p className="max-w-[680px] font-light leading-relaxed text-base text-[#4A5872]">
                   {item.a}
                 </p>
               </div>
