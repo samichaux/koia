@@ -40,7 +40,7 @@ export function EmailWaitlistForm({
     return (
       <div
         role="status"
-        className={`text-[#E8E8E8] font-sans text-base animate-[fade-in_400ms_ease-out] ${align === "center" ? "text-center" : ""}`}
+        className={`text-[#EEF0F8] font-sans text-base animate-[fade-in_400ms_ease-out] ${align === "center" ? "text-center" : ""}`}
       >
         Tu es sur la liste <span className="text-[#C2001E]">✓</span>
       </div>
@@ -63,7 +63,7 @@ export function EmailWaitlistForm({
               handleSubmit();
             }
           }}
-          className="sm:w-[320px] rounded-lg border border-white/[0.08] bg-white/[0.04] px-5 py-[14px] text-[#E8E8E8] placeholder:text-[#3D4450] outline-none transition-all duration-300 focus:border-[rgba(194,0,30,0.4)] focus:shadow-[0_0_0_3px_rgba(194,0,30,0.1)]"
+          className="sm:w-[300px] rounded-lg border border-[#1E2A40] bg-[rgba(14,21,37,0.8)] px-5 py-[14px] text-[#EEF0F8] placeholder:text-[#1A2338] outline-none transition-all duration-300 focus:border-[rgba(194,0,30,0.4)] focus:shadow-[0_0_0_3px_rgba(194,0,30,0.08)]"
           style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
         />
         <div className="relative">
