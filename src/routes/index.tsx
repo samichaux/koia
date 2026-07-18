@@ -11,6 +11,269 @@ export const Route = createFileRoute("/")({
 const bebas = { fontFamily: "'Bebas Neue', sans-serif" } as const;
 const easing = "cubic-bezier(0.16,1,0.3,1)";
 
+function useInView<T extends HTMLElement>(threshold = 0.2) {
+  const ref = useRef<T | null>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    if (!ref.current) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            setVisible(true);
+            io.disconnect();
+          }
+        }
+      },
+      { threshold },
+    );
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
+
+function WordReveal({
+  text,
+  size = "text-4xl md:text-5xl",
+  gradient = false,
+  color,
+}: {
+  text: string;
+  size?: string;
+  gradient?: boolean;
+  color?: string;
+}) {
+  const { ref, visible } = useInView<HTMLHeadingElement>(0.2);
+  const words = text.split(" ");
+  return (
+    <h2
+      ref={ref}
+      className={`uppercase ${size}`}
+      style={{
+        ...bebas,
+        lineHeight: 0.95,
+        letterSpacing: "0.02em",
+        color: color ?? "#EEF0F8",
+      }}
+    >
+      {words.map((w, i) => (
+        <span
+          key={i}
+          style={{
+            display: "inline-block",
+            overflow: "hidden",
+            verticalAlign: "bottom",
+            marginRight: "0.25em",
+            paddingBottom: "0.05em",
+          }}
+        >
+          <span
+            style={{
+              display: "inline-block",
+              transform: visible ? "translateY(0)" : "translateY(100%)",
+              opacity: visible ? 1 : 0,
+              transition: `transform 500ms ${easing} ${i * 50}ms, opacity 500ms ${easing} ${i * 50}ms`,
+              ...(gradient
+                ? {
+                    backgroundImage:
+                      "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
+                    WebkitBackgroundClip: "text",
+                    backgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    color: "transparent",
+                  }
+                : {}),
+            }}
+          >
+            {w}
+          </span>
+        </span>
+      ))}
+    </h2>
+  );
+}
+
+function MotivationalDivider() {
+  return (
+    <section className="py-16">
+      <div className="mx-auto max-w-[1200px] px-6 text-center">
+        <WordReveal
+          text="ARRÊTE DE DEVINER."
+          size=""
+          color="#1A2338"
+        />
+        <div className="mt-2">
+          <WordReveal
+            text="COMMENCE À COMPRENDRE."
+            size=""
+            gradient
+          />
+        </div>
+      </div>
+      <style>{`
+        .koia-motiv h2 { font-size: clamp(2.5rem, 7vw, 5rem) !important; text-align: center; }
+      `}</style>
+    </section>
+  );
+}
+
+const programme = [
+  { name: "Hip Thrust", sets: "4×10", rpe: "RPE 8" },
+  { name: "Rowing T-bar", sets: "4×10", rpe: "RPE 7" },
+  { name: "Squat Bulgare", sets: "3×12", rpe: "RPE 7" },
+  { name: "Reverse Pec Deck", sets: "3×15", rpe: "RPE 6" },
+  { name: "Abduction machine", sets: "3×15", rpe: "RPE 6" },
+];
+
+function ProgrammeSection() {
+  const { ref, visible } = useInView<HTMLDivElement>(0.2);
+  return (
+    <section className="koia-section-divider">
+      <div className="mx-auto max-w-[1200px] px-6 py-24">
+        <RevealOnScroll>
+          <Eyebrow>Exemple</Eyebrow>
+        </RevealOnScroll>
+        <WordReveal text="Ton programme, pas celui de tout le monde" />
+        <div className="mt-16 flex justify-center">
+          <div
+            ref={ref}
+            className="w-full max-w-[480px] overflow-hidden rounded-xl border border-[#1E2A40] bg-[#0E1525]"
+            style={{
+              opacity: visible ? 1 : 0,
+              transform: visible
+                ? "perspective(800px) rotateX(0deg) scale(1)"
+                : "perspective(800px) rotateX(4deg) scale(0.96)",
+              transformOrigin: "center top",
+              transition: `opacity 800ms ${easing}, transform 800ms ${easing}`,
+            }}
+          >
+            <div
+              className="flex items-center justify-between"
+              style={{ background: "#141D30", padding: "16px 20px" }}
+            >
+              <span style={{ ...bebas, fontSize: "1.125rem", color: "#EEF0F8" }}>
+                FULL BODY A
+              </span>
+              <span
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  fontWeight: 300,
+                  fontSize: "0.75rem",
+                  color: "#4A5872",
+                }}
+              >
+                Semaine 3 · Recomp
+              </span>
+            </div>
+            <div>
+              {programme.map((row, i) => (
+                <div
+                  key={row.name}
+                  className="flex items-center justify-between"
+                  style={{
+                    padding: "12px 20px",
+                    background: i % 2 === 1 ? "rgba(20, 29, 48, 0.5)" : "transparent",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 400,
+                      fontSize: "0.875rem",
+                      color: "#EEF0F8",
+                    }}
+                  >
+                    {row.name}
+                  </span>
+                  <div className="flex items-center gap-3">
+                    <span
+                      style={{
+                        fontFamily: "Inter, sans-serif",
+                        fontWeight: 300,
+                        fontSize: "0.875rem",
+                        color: "#4A5872",
+                      }}
+                    >
+                      {row.sets}
+                    </span>
+                    <span
+                      className="rounded-full"
+                      style={{
+                        background: "rgba(194,0,30,0.12)",
+                        padding: "2px 10px",
+                        fontFamily: "Inter, sans-serif",
+                        fontWeight: 500,
+                        fontSize: "0.75rem",
+                      }}
+                    >
+                      <span
+                        style={{
+                          backgroundImage:
+                            "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
+                          WebkitBackgroundClip: "text",
+                          backgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          color: "transparent",
+                        }}
+                      >
+                        {row.rpe}
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div
+              className="flex items-start"
+              style={{ padding: "16px 20px", borderTop: "1px solid #1E2A40" }}
+            >
+              <div
+                className="flex items-center justify-center shrink-0"
+                style={{
+                  width: 16,
+                  height: 16,
+                  borderRadius: "50%",
+                  background: "#0E1525",
+                  border: "1px solid rgba(194,0,30,0.2)",
+                  fontFamily: "Inter, sans-serif",
+                  fontWeight: 500,
+                  fontSize: 7,
+                }}
+              >
+                <span
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
+                    WebkitBackgroundClip: "text",
+                    backgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    color: "transparent",
+                  }}
+                >
+                  K
+                </span>
+              </div>
+              <p
+                style={{
+                  marginLeft: 8,
+                  fontFamily: "Inter, sans-serif",
+                  fontWeight: 300,
+                  fontSize: "0.75rem",
+                  lineHeight: 1.5,
+                  color: "#4A5872",
+                }}
+              >
+                Hip thrust en premier — on cible les fessiers quand tu es encore fraîche. Le rowing est chest-supported pour protéger le bas du dos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const problems = [
   {
     n: "01",
