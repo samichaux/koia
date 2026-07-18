@@ -165,16 +165,16 @@ function AccentHeadline({
 
 function IPhoneMockup() {
   const messages = [
-    { from: "koia", text: "Salut ! Prête pour ton Full Body A ?", delay: 500 },
-    { from: "user", text: "Oui mais j'ai une douleur au genou droit depuis hier", delay: 1800 },
+    { from: "koia", text: "Prête pour ta séance ? Full Body A aujourd'hui 💪", delay: 500 },
+    { from: "user", text: "oui mais g mal au genou droit depuis hier", delay: 1800 },
     {
       from: "koia",
-      text: "Ok. Je retire le squat bulgare et je le remplace par du hip thrust — pas de flexion profonde aujourd'hui.",
+      text: "Ok on adapte. Je retire le squat bulgare, remplacé par hip thrust — pas de flexion profonde.",
       delay: 3200,
     },
     {
       from: "koia",
-      text: "Le reste du programme est maintenu, RPE cible à 6 au lieu de 8. Si la douleur persiste demain, consulte.",
+      text: "RPE 6 au lieu de 8 aujourd'hui. Si ça persiste demain, va consulter.",
       delay: 4200,
     },
     { from: "user", text: "Nickel 👍", delay: 5500 },
@@ -263,35 +263,38 @@ function IPhoneMockup() {
 
         {/* Chat header */}
         <div
-          className="flex items-center gap-2.5"
-          style={{ padding: "8px 16px", borderBottom: "1px solid #1E2A40" }}
+          className="flex items-center gap-2"
+          style={{ height: 40, padding: "6px 14px", borderBottom: "1px solid #1E2A40" }}
         >
           <div
             className="flex items-center justify-center"
             style={{
-              width: 32,
-              height: 32,
+              width: 26,
+              height: 26,
               borderRadius: "50%",
               background: "#0E1525",
               color: "#C2001E",
               fontFamily: "Inter, sans-serif",
               fontWeight: 500,
-              fontSize: 14,
+              fontSize: 11,
             }}
           >
             K
           </div>
           <div className="flex flex-col leading-tight">
-            <span className="text-sm font-medium text-[#EEF0F8]" style={{ fontFamily: "Inter, sans-serif" }}>
+            <span
+              className="font-medium text-[#EEF0F8]"
+              style={{ fontFamily: "Inter, sans-serif", fontSize: 11 }}
+            >
               Koia
             </span>
             <span
-              className="flex items-center gap-1 text-xs text-[#4A5872]"
-              style={{ fontFamily: "Inter, sans-serif", fontWeight: 300 }}
+              className="flex items-center gap-1 text-[#4A5872]"
+              style={{ fontFamily: "Inter, sans-serif", fontWeight: 300, fontSize: 10 }}
             >
               <span
                 className="inline-block rounded-full"
-                style={{ width: 6, height: 6, background: "#C2001E" }}
+                style={{ width: 5, height: 5, background: "#C2001E" }}
               />
               En ligne
             </span>
@@ -304,24 +307,29 @@ function IPhoneMockup() {
           className="flex-1 overflow-hidden"
           style={{ padding: 16 }}
         >
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col">
             {messages.map((m, i) => {
               const visible = i < shown;
               if (!visible) return null;
               const isUser = m.from === "user";
+              const isContinuation = i > 0 && messages[i - 1].from === m.from;
               return (
-                <div key={i} className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
+                <div
+                  key={i}
+                  className={`flex ${isUser ? "justify-end" : "justify-start"}`}
+                  style={{ marginBottom: isContinuation ? 3 : 6 }}
+                >
                   <div
                     style={{
                       background: isUser ? "#141D30" : "#0E1525",
                       color: "#EEF0F8",
-                      borderRadius: 12,
-                      padding: "10px 14px",
-                      maxWidth: "85%",
+                      borderRadius: isUser ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
+                      padding: "8px 12px",
+                      maxWidth: "78%",
                       fontFamily: "Inter, sans-serif",
                       fontWeight: 300,
-                      fontSize: 12,
-                      lineHeight: 1.4,
+                      fontSize: 11,
+                      lineHeight: 1.35,
                       animation: "koia-msg-in 400ms cubic-bezier(0.16,1,0.3,1) both",
                     }}
                   >
@@ -331,13 +339,16 @@ function IPhoneMockup() {
               );
             })}
             {activeTyping !== null && (
-              <div className={`flex ${typingSide === "user" ? "justify-end" : "justify-start"}`}>
+              <div
+                className={`flex ${typingSide === "user" ? "justify-end" : "justify-start"}`}
+                style={{ marginBottom: 6 }}
+              >
                 <div
                   className="flex items-center gap-1"
                   style={{
                     background: typingSide === "user" ? "#141D30" : "#0E1525",
-                    borderRadius: 12,
-                    padding: "10px 14px",
+                    borderRadius: typingSide === "user" ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
+                    padding: "8px 12px",
                   }}
                 >
                   {[0, 1, 2].map((d) => (
@@ -361,17 +372,18 @@ function IPhoneMockup() {
         {/* Input bar */}
         <div
           className="flex items-center gap-2"
-          style={{ padding: "10px 16px", borderTop: "1px solid #1E2A40" }}
+          style={{ padding: "8px 12px", borderTop: "1px solid #1E2A40" }}
         >
           <div
-            className="flex-1"
+            className="flex flex-1 items-center"
             style={{
               background: "#0E1525",
               borderRadius: 20,
-              padding: "8px 16px",
+              height: 32,
+              padding: "0 12px",
               fontFamily: "Inter, sans-serif",
               fontWeight: 300,
-              fontSize: 12,
+              fontSize: 10,
               color: "#1A2338",
             }}
           >
@@ -381,9 +393,9 @@ function IPhoneMockup() {
             type="button"
             aria-hidden
             className="flex items-center justify-center"
-            style={{ width: 28, height: 28, borderRadius: "50%", background: "#C2001E", color: "#fff" }}
+            style={{ width: 24, height: 24, borderRadius: "50%", background: "#1E2A40", color: "#EEF0F8" }}
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="13 6 19 12 13 18" />
             </svg>
