@@ -23,10 +23,13 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
                 </span>
                 <span
                   aria-hidden
-                  className={`shrink-0 text-2xl leading-none text-[#1A2338] transition-transform duration-300 ${
+                  className={`shrink-0 text-2xl leading-none transition-all duration-300 ${
                     isOpen ? "rotate-45" : ""
                   }`}
-                  style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
+                  style={{
+                    color: isOpen ? "#C2001E" : "#1A2338",
+                    transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
+                  }}
                 >
                   +
                 </span>
