@@ -490,7 +490,14 @@ function IPhoneMockup() {
             type="button"
             aria-hidden
             className="flex items-center justify-center"
-            style={{ width: 24, height: 24, borderRadius: "50%", background: "#1E2A40", color: "#EEF0F8" }}
+            style={{
+              width: 24,
+              height: 24,
+              borderRadius: "50%",
+              background:
+                "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
+              color: "#EEF0F8",
+            }}
           >
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
