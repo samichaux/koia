@@ -330,12 +330,38 @@ function IPhoneMockup() {
               if (!visible) return null;
               const isUser = m.from === "user";
               const isContinuation = i > 0 && messages[i - 1].from === m.from;
+              const isLastInGroup = i === messages.length - 1 || messages[i + 1].from !== m.from;
+              const showAvatar = isLastInGroup;
               return (
                 <div
                   key={i}
-                  className={`flex ${isUser ? "justify-end" : "justify-start"}`}
-                  style={{ marginBottom: isContinuation ? 3 : 6 }}
+                  className={`flex items-end ${isUser ? "flex-row-reverse" : "flex-row"}`}
+                  style={{
+                    marginBottom: isContinuation ? 3 : 6,
+                    marginLeft: !isUser && !showAvatar ? 26 : 0,
+                    marginRight: isUser && !showAvatar ? 26 : 0,
+                    gap: 6,
+                  }}
                 >
+                  {showAvatar && (
+                    <div
+                      className="flex items-center justify-center"
+                      style={{
+                        width: 20,
+                        height: 20,
+                        borderRadius: "50%",
+                        flexShrink: 0,
+                        background: isUser ? "rgba(194, 0, 30, 0.15)" : "#0E1525",
+                        border: isUser ? "1px solid rgba(194, 0, 30, 0.2)" : "1px solid #1E2A40",
+                        fontFamily: "Inter, sans-serif",
+                        fontWeight: 500,
+                        fontSize: 9,
+                        color: isUser ? "#EEF0F8" : "#C2001E",
+                      }}
+                    >
+                      {isUser ? "S" : "K"}
+                    </div>
+                  )}
                   <div
                     style={{
                       background: isUser ? "rgba(194, 0, 30, 0.12)" : "#0E1525",
