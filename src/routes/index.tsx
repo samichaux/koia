@@ -1187,12 +1187,25 @@ function Index() {
 
       {/* FINAL CTA */}
       <section className="relative koia-section-divider overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1920&q=70&auto=format&fit=crop"
+          alt=""
+          aria-hidden
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ filter: "saturate(0.4) brightness(0.7)", zIndex: 0 }}
+        />
         <div
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          className="absolute inset-0"
+          style={{ background: "rgba(4,7,15,0.92)", zIndex: 0 }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full z-0"
           style={{ background: "rgba(194,0,30,0.04)", filter: "blur(100px)" }}
         />
-        <div className="relative mx-auto max-w-[900px] px-6 py-32 text-center">
+        <div className="relative z-10 mx-auto max-w-[900px] px-6 py-32 text-center">
           <ScaleReveal>
             <h2
               className="uppercase text-[#EEF0F8]"
