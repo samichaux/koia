@@ -276,7 +276,7 @@ function IPhoneMockup() {
               color: "#C2001E",
               fontFamily: "Inter, sans-serif",
               fontWeight: 500,
-              fontSize: 11,
+              fontSize: 12,
             }}
           >
             K
