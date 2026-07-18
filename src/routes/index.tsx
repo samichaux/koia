@@ -639,7 +639,7 @@ function Index() {
             {/* Card 1 — full width */}
             <RevealOnScroll className="md:col-span-2">
               <div
-                className="group rounded-xl border border-[#1E2A40] bg-[#0E1525] p-8 md:p-12 transition-colors duration-300 hover:border-[rgba(238,240,248,0.1)]"
+                className="group koia-card-grad rounded-xl border border-[#1E2A40] bg-[#0E1525] p-8 md:p-12 "
                 style={{ transitionTimingFunction: easing }}
               >
                 <h3 className="text-xl font-medium text-[#EEF0F8]">
@@ -693,7 +693,7 @@ function Index() {
             {/* Card 2 */}
             <RevealOnScroll delay={100}>
               <div
-                className="h-full rounded-xl border border-[#1E2A40] bg-[#0E1525] p-9 transition-colors duration-300 hover:border-[rgba(238,240,248,0.1)]"
+                className="h-full koia-card-grad rounded-xl border border-[#1E2A40] bg-[#0E1525] p-9 "
                 style={{ transitionTimingFunction: easing }}
               >
                 <h3 className="text-lg font-medium text-[#EEF0F8]">Raisonnement transparent</h3>
@@ -716,7 +716,7 @@ function Index() {
             {/* Card 3 */}
             <RevealOnScroll delay={200}>
               <div
-                className="h-full rounded-xl border border-[#1E2A40] bg-[#0E1525] p-9 transition-colors duration-300 hover:border-[rgba(238,240,248,0.1)]"
+                className="h-full koia-card-grad rounded-xl border border-[#1E2A40] bg-[#0E1525] p-9 "
                 style={{ transitionTimingFunction: easing }}
               >
                 <h3 className="text-lg font-medium text-[#EEF0F8]">Suivi repas sans prise de tête</h3>
