@@ -853,9 +853,7 @@ function Index() {
           <RevealOnScroll>
             <Eyebrow>Le problème</Eyebrow>
           </RevealOnScroll>
-          <RevealOnScroll>
-            <AccentHeadline before="Ce que les apps fitness te" accent="vendent" />
-          </RevealOnScroll>
+          <WordReveal text="Ce que les apps fitness te vendent" />
           <div className="mt-16 border-t border-[#1E2A40]">
             {problems.map((p, i) => (
               <div
@@ -863,11 +861,11 @@ function Index() {
                 ref={(el) => {
                   problemsRefs.current[i] = el;
                 }}
-                className="grid grid-cols-[auto_1fr] gap-6 md:gap-10 border-b border-[#1E2A40] py-10 transition-all duration-700"
+                className="grid grid-cols-[auto_1fr] gap-6 md:gap-10 border-b border-[#1E2A40] py-10"
                 style={{
-                  transitionTimingFunction: easing,
+                  transition: `opacity 600ms ${easing}, transform 600ms ${easing}`,
                   opacity: visibleProblems.has(i) ? 1 : 0,
-                  transform: visibleProblems.has(i) ? "translateY(0)" : "translateY(10px)",
+                  transform: visibleProblems.has(i) ? "translateX(0)" : "translateX(-40px)",
                 }}
               >
                 <div
