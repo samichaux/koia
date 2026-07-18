@@ -8,14 +8,14 @@
   --font-display: "Bebas Neue", sans-serif;
   --font-sans: "Inter", "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
-  --color-koia-canvas: #06080C;
-  --color-koia-surface: #0C1017;
-  --color-koia-surface-hover: #111820;
-  --color-koia-text: #E8E8E8;
-  --color-koia-text-secondary: #6B7280;
-  --color-koia-text-muted: #3D4450;
+  --color-koia-canvas: #04070F;
+  --color-koia-surface: #0E1525;
+  --color-koia-surface-alt: #141D30;
+  --color-koia-border: #1E2A40;
+  --color-koia-text: #EEF0F8;
+  --color-koia-text-secondary: #4A5872;
+  --color-koia-text-muted: #1A2338;
   --color-koia-crimson: #C2001E;
-  --color-koia-ghost: #1A1F2B;
 }
 
 html {
@@ -23,8 +23,8 @@ html {
 }
 
 body {
-  background-color: #06080C;
-  color: #E8E8E8;
+  background-color: #04070F;
+  color: #EEF0F8;
   font-family: "Inter", "DM Sans", ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -36,7 +36,8 @@ body::before {
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.03;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 
@@ -49,6 +50,18 @@ body::before {
   0% { transform: translateY(-100%); opacity: 0; }
   30% { opacity: 1; }
   100% { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes koia-float {
+  0%, 100% { transform: rotate(2deg) translateY(-8px); }
+  50% { transform: rotate(2deg) translateY(8px); }
+}
+
+@media (max-width: 767px) {
+  @keyframes koia-float {
+    0%, 100% { transform: translateY(-8px); }
+    50% { transform: translateY(8px); }
+  }
 }
 
 /*
