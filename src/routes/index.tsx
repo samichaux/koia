@@ -924,7 +924,7 @@ function Index() {
                 }}
               >
                 <div
-                  style={{ ...bebas, color: "#6B7A99", lineHeight: 1 }}
+                  style={{ ...bebas, color: "#2A3654", lineHeight: 1 }}
                   className="text-5xl md:text-6xl select-none max-md:hidden"
                 >
                   {p.n}
