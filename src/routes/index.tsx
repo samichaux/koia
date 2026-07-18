@@ -96,7 +96,7 @@ function WordReveal({
 
 function MotivationalDivider() {
   return (
-    <section className="py-16">
+    <section className="py-16 koia-motiv">
       <div className="mx-auto max-w-[1200px] px-6 text-center">
         <WordReveal
           text="ARRÊTE DE DEVINER."
@@ -112,9 +112,64 @@ function MotivationalDivider() {
         </div>
       </div>
       <style>{`
-        .koia-motiv h2 { font-size: clamp(2.5rem, 7vw, 5rem) !important; text-align: center; }
+        .koia-motiv h2 { font-size: clamp(2.5rem, 7vw, 5rem); text-align: center; }
       `}</style>
     </section>
+  );
+}
+
+function BentoReveal({
+  children,
+  variant,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  variant: "scale" | "up";
+  delay?: number;
+  className?: string;
+}) {
+  const { ref, visible } = useInView<HTMLDivElement>(0.2);
+  const duration = variant === "scale" ? 700 : 600;
+  const hidden = variant === "scale" ? "scale(0.95)" : "translateY(30px)";
+  const shown = variant === "scale" ? "scale(1)" : "translateY(0)";
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? shown : hidden,
+        transition: `opacity ${duration}ms ${easing} ${delay}ms, transform ${duration}ms ${easing} ${delay}ms`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function ScaleReveal({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const { ref, visible } = useInView<HTMLDivElement>(0.2);
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "scale(1)" : "scale(0.9)",
+        transition: `opacity 800ms ${easing} ${delay}ms, transform 800ms ${easing} ${delay}ms`,
+      }}
+    >
+      {children}
+    </div>
   );
 }
 
