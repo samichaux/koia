@@ -392,10 +392,25 @@ function IPhoneMockup() {
                         fontFamily: "Inter, sans-serif",
                         fontWeight: 500,
                         fontSize: 9,
-                        color: isUser ? "#EEF0F8" : "#C2001E",
+                        color: isUser ? "#EEF0F8" : "transparent",
                       }}
                     >
-                      {isUser ? "S" : "K"}
+                      {isUser ? (
+                        "S"
+                      ) : (
+                        <span
+                          style={{
+                            backgroundImage:
+                              "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
+                            WebkitBackgroundClip: "text",
+                            backgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                            color: "transparent",
+                          }}
+                        >
+                          K
+                        </span>
+                      )}
                     </div>
                   )}
                   <div
