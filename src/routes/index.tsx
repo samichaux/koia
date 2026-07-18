@@ -549,36 +549,13 @@ function Index() {
             >
               Prêt·e à essayer un coach
               <br />
-              qui ne pas
-            </h2>
-            <h2
-              className="sr-only"
-            >
-              qui ne ment pas ?
-            </h2>
-          </RevealOnScroll>
-          {/* Rewriting headline correctly: keep only one visible */}
-          {/* We render actual headline below and hide fallback */}
-          <style>{`.koia-hero-fallback{display:none}`}</style>
-          <div className="-mt-[calc(clamp(2rem,5vw,4rem)+1.6rem)]" aria-hidden>
-            <h2
-              className="uppercase text-[#EEF0F8]"
-              style={{
-                ...bebas,
-                fontSize: "clamp(2rem, 5vw, 4rem)",
-                lineHeight: 1.05,
-                letterSpacing: "0.02em",
-              }}
-            >
-              Prêt·e à essayer un coach
-              <br />
               qui ne{" "}
               <span style={{ ...serif, textTransform: "lowercase", color: "#C2001E" }}>
                 ment
               </span>{" "}
               pas ?
             </h2>
-          </div>
+          </RevealOnScroll>
           <RevealOnScroll delay={100}>
             <div className="mt-10">
               <EmailWaitlistForm idPrefix="final" align="center" />
