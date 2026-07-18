@@ -321,7 +321,7 @@ function IPhoneMockup() {
                 >
                   <div
                     style={{
-                      background: isUser ? "#141D30" : "#0E1525",
+                      background: isUser ? "rgba(194, 0, 30, 0.12)" : "#0E1525",
                       color: "#EEF0F8",
                       borderRadius: isUser ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
                       padding: "8px 12px",
@@ -343,10 +343,10 @@ function IPhoneMockup() {
                 className={`flex ${typingSide === "user" ? "justify-end" : "justify-start"}`}
                 style={{ marginBottom: 6 }}
               >
-                <div
-                  className="flex items-center gap-1"
-                  style={{
-                    background: typingSide === "user" ? "#141D30" : "#0E1525",
+                  <div
+                    className="flex items-center gap-1"
+                    style={{
+                      background: typingSide === "user" ? "rgba(194, 0, 30, 0.12)" : "#0E1525",
                     borderRadius: typingSide === "user" ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
                     padding: "8px 12px",
                   }}
