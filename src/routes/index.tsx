@@ -959,8 +959,9 @@ function Index() {
         </div>
       </section>
 
+      <PulseLine />
       {/* PROBLEM */}
-      <section className="koia-section-divider">
+      <section>
         <div className="mx-auto max-w-[1200px] px-6 py-24">
           <RevealOnScroll>
             <Eyebrow>Le problème</Eyebrow>
@@ -981,7 +982,16 @@ function Index() {
                 }}
               >
                 <div
-                  style={{ ...bebas, color: "#2A3654", lineHeight: 1 }}
+                  style={{
+                    ...bebas,
+                    lineHeight: 1,
+                    backgroundImage:
+                      "linear-gradient(135deg, rgba(255,45,75,0.25) 0%, rgba(194,0,30,0.15) 40%, rgba(122,0,18,0.08) 100%)",
+                    WebkitBackgroundClip: "text",
+                    backgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    color: "transparent",
+                  }}
                   className="text-5xl md:text-6xl select-none max-md:hidden"
                 >
                   {p.n}
@@ -998,10 +1008,11 @@ function Index() {
         </div>
       </section>
 
+      <PulseLine />
       <MotivationalDivider />
 
       {/* DIFFERENCE — Bento */}
-      <section className="koia-section-divider">
+      <section>
         <div className="mx-auto max-w-[1200px] px-6 py-24">
           <RevealOnScroll>
             <Eyebrow>La différence</Eyebrow>
@@ -1107,6 +1118,7 @@ function Index() {
         </div>
       </section>
 
+      <PulseLine />
       <ProgrammeSection />
 
       {/* CREDIBILITY */}
