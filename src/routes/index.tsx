@@ -229,7 +229,7 @@ const programme = [
 function ProgrammeSection() {
   const { ref, visible } = useInView<HTMLDivElement>(0.2);
   return (
-    <section className="koia-section-divider">
+    <section>
       <div className="mx-auto max-w-[1200px] px-6 py-24">
         <RevealOnScroll>
           <Eyebrow>Exemple</Eyebrow>
@@ -274,6 +274,9 @@ function ProgrammeSection() {
                   style={{
                     padding: "12px 20px",
                     background: i % 2 === 1 ? "rgba(20, 29, 48, 0.5)" : "transparent",
+                    opacity: visible ? 1 : 0,
+                    transform: visible ? "translateX(0)" : "translateX(-20px)",
+                    transition: `opacity 400ms ${easing} ${400 + i * 120}ms, transform 400ms ${easing} ${400 + i * 120}ms`,
                   }}
                 >
                   <span
@@ -305,6 +308,10 @@ function ProgrammeSection() {
                         fontFamily: "Inter, sans-serif",
                         fontWeight: 500,
                         fontSize: "0.75rem",
+                        display: "inline-block",
+                        opacity: visible ? 1 : 0,
+                        transform: visible ? "scale(1)" : "scale(0.8)",
+                        transition: `opacity 200ms ${easing} ${400 + i * 120 + 80}ms, transform 200ms ${easing} ${400 + i * 120 + 80}ms`,
                       }}
                     >
                       <span
@@ -326,7 +333,12 @@ function ProgrammeSection() {
             </div>
             <div
               className="flex items-start"
-              style={{ padding: "16px 20px", borderTop: "1px solid #1E2A40" }}
+              style={{
+                padding: "16px 20px",
+                borderTop: "1px solid #1E2A40",
+                opacity: visible ? 1 : 0,
+                transition: `opacity 500ms ${easing} ${400 + programme.length * 120 + 300}ms`,
+              }}
             >
               <div
                 className="flex items-center justify-center shrink-0"
