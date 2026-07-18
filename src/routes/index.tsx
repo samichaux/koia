@@ -354,14 +354,16 @@ function IPhoneMockup() {
               if (!visible) return null;
               const isUser = m.from === "user";
               const isContinuation = i > 0 && messages[i - 1].from === m.from;
-              const isLastInGroup = i === messages.length - 1 || messages[i + 1].from !== m.from;
-              const showAvatar = isLastInGroup;
+              const isFirstInGroup = i === 0 || messages[i - 1].from !== m.from;
+              const showAvatar = isFirstInGroup;
               return (
                 <div
                   key={i}
                   className={`flex items-end ${isUser ? "flex-row-reverse" : "flex-row"}`}
                   style={{
                     marginBottom: isContinuation ? 3 : 6,
+                    marginLeft: !isUser && !isFirstInGroup ? 26 : undefined,
+                    marginRight: isUser && !isFirstInGroup ? 26 : undefined,
                     alignSelf: isUser ? "flex-end" : "flex-start",
                     maxWidth: "72%",
                     gap: 6,
@@ -388,7 +390,9 @@ function IPhoneMockup() {
                   )}
                   <div
                     style={{
-                      background: isUser ? "rgba(194, 0, 30, 0.18)" : "#141E30",
+                      background: isUser
+                        ? "linear-gradient(135deg, rgba(255, 45, 75, 0.22) 0%, rgba(194, 0, 30, 0.16) 40%, rgba(122, 0, 18, 0.12) 100%)"
+                        : "#141E30",
                       color: "#EEF0F8",
                       borderRadius: isUser ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
                       padding: "8px 12px",
@@ -416,7 +420,10 @@ function IPhoneMockup() {
                 <div
                   className="flex items-center gap-1"
                   style={{
-                    background: typingSide === "user" ? "rgba(194, 0, 30, 0.18)" : "#141E30",
+                    background:
+                      typingSide === "user"
+                        ? "linear-gradient(135deg, rgba(255, 45, 75, 0.22) 0%, rgba(194, 0, 30, 0.16) 40%, rgba(122, 0, 18, 0.12) 100%)"
+                        : "#141E30",
                     borderRadius: typingSide === "user" ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
                     padding: "8px 12px",
                   }}
