@@ -941,6 +941,8 @@ function Index() {
         </div>
       </section>
 
+      <MotivationalDivider />
+
       {/* DIFFERENCE — Bento */}
       <section className="koia-section-divider">
         <div className="mx-auto max-w-[1200px] px-6 py-24">
