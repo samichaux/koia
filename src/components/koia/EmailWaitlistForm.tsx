@@ -1,11 +1,24 @@
 import { useRef, useState } from "react";
+import { useEffect } from "react";
 
-const STORAGE_KEY = "koia_waitlist_emails";
+const STORAGE_KEY = "koia_waitlist_email";
 
-export function EmailWaitlistForm({ idPrefix = "hero" }: { idPrefix?: string }) {
+export function EmailWaitlistForm({
+  idPrefix = "hero",
+  align = "left",
+}: {
+  idPrefix?: string;
+  align?: "left" | "center";
+}) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    try {
+      if (localStorage.getItem(STORAGE_KEY)) setSubmitted(true);
+    } catch {}
+  }, []);
 
   const handleSubmit = () => {
     const input = inputRef.current;
@@ -17,13 +30,8 @@ export function EmailWaitlistForm({ idPrefix = "hero" }: { idPrefix?: string }) 
     }
     const email = input.value.trim().toLowerCase();
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      const list: string[] = raw ? JSON.parse(raw) : [];
-      if (!list.includes(email)) list.push(email);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-    } catch {
-      // ignore storage errors
-    }
+      localStorage.setItem(STORAGE_KEY, email);
+    } catch {}
     setError(null);
     setSubmitted(true);
   };
@@ -32,16 +40,16 @@ export function EmailWaitlistForm({ idPrefix = "hero" }: { idPrefix?: string }) 
     return (
       <div
         role="status"
-        className="rounded-lg border border-[color:var(--color-koia-border)] bg-[color:var(--color-koia-card)] px-5 py-4 text-[color:var(--color-koia-text)]"
+        className={`text-[#E8E8E8] font-sans text-base animate-[fade-in_400ms_ease-out] ${align === "center" ? "text-center" : ""}`}
       >
-        Tu es sur la liste ! On te tient au courant.
+        Tu es sur la liste <span className="text-[#C2001E]">✓</span>
       </div>
     );
   }
 
   return (
-    <div className="w-full">
-      <div className="flex flex-col gap-3 sm:flex-row">
+    <div className={`w-full ${align === "center" ? "mx-auto max-w-xl" : ""}`}>
+      <div className={`relative flex flex-col gap-3 sm:flex-row ${align === "center" ? "sm:justify-center" : ""}`}>
         <input
           ref={inputRef}
           id={`${idPrefix}-email`}
@@ -55,18 +63,26 @@ export function EmailWaitlistForm({ idPrefix = "hero" }: { idPrefix?: string }) 
               handleSubmit();
             }
           }}
-          className="flex-1 rounded-lg border border-[color:var(--color-koia-border)] bg-[color:var(--color-koia-card)] px-4 py-3 text-[color:var(--color-koia-text)] placeholder:text-[color:var(--color-koia-footer)] outline-none transition focus:border-[color:var(--color-koia-crimson)]"
+          className="sm:w-[320px] rounded-lg border border-white/[0.08] bg-white/[0.04] px-5 py-[14px] text-[#E8E8E8] placeholder:text-[#3D4450] outline-none transition-all duration-300 focus:border-[rgba(194,0,30,0.4)] focus:shadow-[0_0_0_3px_rgba(194,0,30,0.1)]"
+          style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
         />
-        <button
-          type="button"
-          onClick={handleSubmit}
-          className="rounded-lg bg-[color:var(--color-koia-crimson)] px-6 py-3 font-medium text-white transition hover:brightness-110"
-        >
-          Rejoindre la bêta privée
-        </button>
+        <div className="relative">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[60px] w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+            style={{ background: "rgba(194,0,30,0.25)", filter: "blur(40px)" }}
+          />
+          <button
+            type="button"
+            onClick={handleSubmit}
+            className="relative rounded-lg bg-[#C2001E] px-7 py-[14px] text-sm font-medium uppercase tracking-[0.05em] text-white transition-all duration-200 hover:brightness-[1.15] hover:scale-[1.02]"
+          >
+            Rejoindre la bêta
+          </button>
+        </div>
       </div>
       {error ? (
-        <p className="mt-2 text-sm text-[color:var(--color-koia-crimson)]">{error}</p>
+        <p className={`mt-2 text-sm text-[#C2001E] ${align === "center" ? "text-center" : ""}`}>{error}</p>
       ) : null}
     </div>
   );
