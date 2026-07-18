@@ -101,7 +101,7 @@ function MotivationalDivider() {
         <WordReveal
           text="ARRÊTE DE DEVINER."
           size=""
-          color="#1A2338"
+          color="#2A3654"
         />
         <div className="mt-2">
           <WordReveal
@@ -215,7 +215,7 @@ function ProgrammeSection() {
                   fontFamily: "Inter, sans-serif",
                   fontWeight: 300,
                   fontSize: "0.75rem",
-                  color: "#4A5872",
+                  color: "#8A96B0",
                 }}
               >
                 Semaine 3 · Recomp
@@ -247,7 +247,7 @@ function ProgrammeSection() {
                         fontFamily: "Inter, sans-serif",
                         fontWeight: 300,
                         fontSize: "0.875rem",
-                        color: "#4A5872",
+                        color: "#8A96B0",
                       }}
                     >
                       {row.sets}
@@ -316,7 +316,7 @@ function ProgrammeSection() {
                   fontWeight: 300,
                   fontSize: "0.75rem",
                   lineHeight: 1.5,
-                  color: "#4A5872",
+                  color: "#8A96B0",
                 }}
               >
                 Hip thrust en premier — on cible les fessiers quand tu es encore fraîche. Le rowing est chest-supported pour protéger le bas du dos.
@@ -452,7 +452,7 @@ function HeroHeadline() {
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
     <div
-      className="text-xs font-medium uppercase text-[#1A2338] mb-12"
+      className="text-xs font-medium uppercase text-[#6B7A99] mb-12"
       style={{ letterSpacing: "0.2em" }}
     >
       {children}
@@ -608,9 +608,9 @@ function IPhoneMockup() {
             9:41
           </span>
           <div className="flex items-center gap-1">
-            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#4A5872" }} />
-            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#4A5872" }} />
-            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#4A5872" }} />
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#8A96B0" }} />
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#8A96B0" }} />
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#8A96B0" }} />
           </div>
         </div>
 
@@ -652,7 +652,7 @@ function IPhoneMockup() {
               KOIA
             </span>
             <span
-              className="flex items-center gap-1 text-[#4A5872]"
+              className="flex items-center gap-1 text-[#8A96B0]"
               style={{ fontFamily: "Inter, sans-serif", fontWeight: 300, fontSize: 10 }}
             >
               <span
@@ -773,7 +773,7 @@ function IPhoneMockup() {
                       style={{
                         width: 4,
                         height: 4,
-                        background: "#4A5872",
+                        background: "#8A96B0",
                         animation: `koia-typing 1.2s ease-in-out ${d * 0.15}s infinite`,
                       }}
                     />
@@ -799,7 +799,7 @@ function IPhoneMockup() {
               fontFamily: "Inter, sans-serif",
               fontWeight: 300,
               fontSize: 10,
-              color: "#1A2338",
+              color: "#6B7A99",
             }}
           >
             Écris à ton coach...
@@ -870,13 +870,13 @@ function Index() {
             {/* Left: text + form */}
             <div className="text-left max-md:text-center">
               <HeroHeadline />
-              <p className="mt-6 font-light text-lg text-[#4A5872] animate-[fade-in_600ms_ease-out_1200ms_both]">
+              <p className="mt-6 font-light text-lg text-[#8A96B0] animate-[fade-in_600ms_ease-out_1200ms_both]">
                 Tu n'as pas besoin de savoir prompter pour avoir un vrai coach.
               </p>
               <div className="mt-10 animate-[fade-in_600ms_ease-out_1400ms_both] max-md:flex max-md:justify-center">
                 <EmailWaitlistForm idPrefix="hero" />
               </div>
-              <p className="mt-4 text-xs font-light text-[#1A2338] animate-[fade-in_600ms_ease-out_1600ms_both]">
+              <p className="mt-4 text-xs font-light text-[#6B7A99] animate-[fade-in_600ms_ease-out_1600ms_both]">
                 Gratuit · Pas de spam · Accès prioritaire
               </p>
             </div>
@@ -924,14 +924,14 @@ function Index() {
                 }}
               >
                 <div
-                  style={{ ...bebas, color: "#1A2338", lineHeight: 1 }}
+                  style={{ ...bebas, color: "#2A3654", lineHeight: 1 }}
                   className="text-5xl md:text-6xl select-none max-md:hidden"
                 >
                   {p.n}
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-[#EEF0F8]">{p.title}</h3>
-                  <p className="mt-2 font-light text-base leading-relaxed text-[#4A5872] max-w-[720px]">
+                  <p className="mt-2 font-light text-base leading-relaxed text-[#8A96B0] max-w-[720px]">
                     {p.text}
                   </p>
                 </div>
@@ -961,27 +961,27 @@ function Index() {
                 <h3 className="text-xl font-medium text-[#EEF0F8]">
                   L'IA, mais bien promptée.
                 </h3>
-                <p className="mt-4 max-w-[540px] font-light text-base leading-relaxed text-[#4A5872]">
+                <p className="mt-4 max-w-[540px] font-light text-base leading-relaxed text-[#8A96B0]">
                   KOIA, c'est un agent IA construit avec un system prompt de coaching expert — onboarding structuré, gestion des blessures, adaptation morphologique et hormonale, protocole RPE. Tu parles normalement, l'IA fait le travail de fond.
                 </p>
 
                 <div className="mt-10 grid gap-8 md:grid-cols-[1fr_1px_1fr]">
                   {/* ChatGPT */}
                   <div>
-                    <div className="mb-4 text-xs font-normal text-[#1A2338]">ChatGPT</div>
+                    <div className="mb-4 text-xs font-normal text-[#6B7A99]">ChatGPT</div>
                     <div
-                      className="rounded-lg px-3.5 py-2.5 text-sm font-light text-[#4A5872] max-w-[90%]"
+                      className="rounded-lg px-3.5 py-2.5 text-sm font-light text-[#8A96B0] max-w-[90%]"
                       style={{ background: "rgba(238,240,248,0.03)" }}
                     >
                       Fais-moi un programme de muscu
                     </div>
                     <div
-                      className="mt-2 ml-auto rounded-lg px-3.5 py-2.5 text-sm font-light text-[#4A5872]"
+                      className="mt-2 ml-auto rounded-lg px-3.5 py-2.5 text-sm font-light text-[#8A96B0]"
                       style={{ background: "rgba(238,240,248,0.03)" }}
                     >
                       Jour 1 — Bench press 4×10, Shoulder press 3×12, Triceps pushdown 3×15...
                     </div>
-                    <div className="mt-3 text-xs text-[#1A2338]">Générique · Pas de contexte</div>
+                    <div className="mt-3 text-xs text-[#6B7A99]">Générique · Pas de contexte</div>
                   </div>
                   {/* Separator */}
                   <div className="hidden md:block h-full w-px bg-[#1E2A40]" />
@@ -1000,7 +1000,7 @@ function Index() {
                     >
                       On remplace le squat bulgare par du hip thrust. Pas de flexion profonde cette semaine. RPE 6. Si ça persiste 48h → consulte.
                     </div>
-                    <div className="mt-3 text-xs text-[#4A5872]">Contextualisé · Adapté · Sourcé</div>
+                    <div className="mt-3 text-xs text-[#8A96B0]">Contextualisé · Adapté · Sourcé</div>
                   </div>
                 </div>
               </div>
@@ -1013,12 +1013,12 @@ function Index() {
                 style={{ transitionTimingFunction: easing }}
               >
                 <h3 className="text-lg font-medium text-[#EEF0F8]">Raisonnement transparent</h3>
-                <p className="mt-4 font-light text-sm leading-relaxed text-[#4A5872]">
+                <p className="mt-4 font-light text-sm leading-relaxed text-[#8A96B0]">
                   Chaque exercice choisi pour une raison. KOIA t'explique pourquoi, avec le
                   niveau de preuve. Si la science n'est pas claire, il te le dit.
                 </p>
                 <span
-                  className="mt-6 inline-block rounded-full px-3 py-1 text-xs font-normal text-[#4A5872]"
+                  className="mt-6 inline-block rounded-full px-3 py-1 text-xs font-normal text-[#8A96B0]"
                   style={{
                     background: "rgba(194,0,30,0.04)",
                     border: "1px solid rgba(194,0,30,0.12)",
@@ -1036,12 +1036,12 @@ function Index() {
                 style={{ transitionTimingFunction: easing }}
               >
                 <h3 className="text-lg font-medium text-[#EEF0F8]">Suivi repas sans prise de tête</h3>
-                <p className="mt-4 font-light text-sm leading-relaxed text-[#4A5872]">
+                <p className="mt-4 font-light text-sm leading-relaxed text-[#8A96B0]">
                   Décris ce que tu manges, KOIA analyse. Pas de comptage obsessionnel — un suivi basé sur les portions et tes objectifs protéiques.
                 </p>
                 <div className="mt-6 space-y-1.5">
-                  <p className="font-light text-xs text-[#4A5872]">🍗 Poulet grillé 150g → ~45g protéines</p>
-                  <p className="font-light text-xs text-[#4A5872]">🥗 Salade composée → ~18g protéines</p>
+                  <p className="font-light text-xs text-[#8A96B0]">🍗 Poulet grillé 150g → ~45g protéines</p>
+                  <p className="font-light text-xs text-[#8A96B0]">🥗 Salade composée → ~18g protéines</p>
                   <p className="text-xs font-normal text-[#EEF0F8]">📊 Total : 63g / 110g cible</p>
                 </div>
               </div>
@@ -1062,9 +1062,9 @@ function Index() {
             <div className="flex gap-8 md:gap-10 overflow-x-auto md:overflow-visible md:justify-between items-center pb-2 -mx-6 px-6">
               {credibility.map((c, i) => (
                 <div key={i} className="flex items-center gap-8 md:gap-10 shrink-0 md:shrink">
-                  <p className="font-light text-sm text-[#1A2338] max-w-[260px]">{c}</p>
+                  <p className="font-light text-sm text-[#B4BFD3] max-w-[260px]">{c}</p>
                   {i < credibility.length - 1 ? (
-                    <div className="hidden md:block h-10 w-px shrink-0" style={{ background: "#1A2338" }} />
+                    <div className="hidden md:block h-10 w-px shrink-0" style={{ background: "#2A3654" }} />
                   ) : null}
                 </div>
               ))}
@@ -1117,7 +1117,7 @@ function Index() {
             </div>
           </RevealOnScroll>
           <RevealOnScroll delay={200}>
-            <p className="mt-4 text-xs font-light text-[#1A2338]">
+            <p className="mt-4 text-xs font-light text-[#6B7A99]">
               Gratuit · Pas de spam · Accès prioritaire
             </p>
           </RevealOnScroll>
@@ -1126,7 +1126,7 @@ function Index() {
 
       {/* FOOTER */}
       <footer className="koia-section-divider">
-        <div className="mx-auto max-w-[1200px] px-6 py-12 text-center text-xs font-light text-[#1A2338]">
+        <div className="mx-auto max-w-[1200px] px-6 py-12 text-center text-xs font-light text-[#6B7A99]">
           © 2026 KOIA
         </div>
       </footer>

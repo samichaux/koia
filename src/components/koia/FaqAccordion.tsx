@@ -54,7 +54,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
                     isOpen ? "rotate-45" : ""
                   }`}
                   style={{
-                    color: isOpen ? "#C2001E" : "#1A2338",
+                    color: isOpen ? "#C2001E" : "#6B7A99",
                     transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
                   }}
                 >
@@ -71,7 +71,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
               style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
             >
               <div className="min-h-0">
-                <p className="max-w-[680px] font-light leading-relaxed text-base text-[#4A5872]">
+                <p className="max-w-[680px] font-light leading-relaxed text-base text-[#8A96B0]">
                   {item.a}
                 </p>
               </div>
