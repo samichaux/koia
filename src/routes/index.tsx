@@ -947,10 +947,10 @@ function Index() {
                   </div>
                 </div>
               </div>
-            </RevealOnScroll>
+            </BentoReveal>
 
             {/* Card 2 */}
-            <RevealOnScroll delay={100}>
+            <BentoReveal variant="up" delay={150}>
               <div
                 className="h-full koia-card-grad rounded-xl border border-[#1E2A40] bg-[#0E1525] p-9 "
                 style={{ transitionTimingFunction: easing }}
@@ -970,10 +970,10 @@ function Index() {
                   [Preuve : méta-analyse 2018, Schoenfeld et al.]
                 </span>
               </div>
-            </RevealOnScroll>
+            </BentoReveal>
 
             {/* Card 3 */}
-            <RevealOnScroll delay={200}>
+            <BentoReveal variant="up" delay={300}>
               <div
                 className="h-full koia-card-grad rounded-xl border border-[#1E2A40] bg-[#0E1525] p-9 "
                 style={{ transitionTimingFunction: easing }}
@@ -988,7 +988,7 @@ function Index() {
                   <p className="text-xs font-normal text-[#EEF0F8]">📊 Total : 63g / 110g cible</p>
                 </div>
               </div>
-            </RevealOnScroll>
+            </BentoReveal>
           </div>
         </div>
       </section>
