@@ -57,6 +57,16 @@ body::before {
   50% { transform: rotate(2deg) translateY(8px); }
 }
 
+@keyframes koia-msg-in {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes koia-typing {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
 @media (max-width: 767px) {
   @keyframes koia-float {
     0%, 100% { transform: translateY(-8px); }
