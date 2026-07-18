@@ -101,8 +101,21 @@ function MotivationalDivider() {
   const line1Duration = line1.length * 100;
   const beatPause = 400;
   return (
-    <section className="py-16 koia-motiv" ref={ref}>
-      <div className="relative mx-auto max-w-[1200px] px-6 text-center">
+    <section className="relative py-16 koia-motiv overflow-hidden" ref={ref}>
+      <img
+        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=70&auto=format&fit=crop"
+        alt=""
+        aria-hidden
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover"
+        style={{ filter: "saturate(0.4) brightness(0.7)", zIndex: 0 }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{ background: "rgba(4,7,15,0.88)", zIndex: 1 }}
+      />
+      <div className="relative z-10 mx-auto max-w-[1200px] px-6 text-center">
         <h2 className="uppercase" style={{ ...bebas, color: "#2A3448", lineHeight: 0.95, letterSpacing: "0.02em" }}>
           {line1.map((w, i) => (
             <span key={i} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.25em", paddingBottom: "0.05em" }}>
