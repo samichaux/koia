@@ -390,9 +390,7 @@ function IPhoneMockup() {
                   )}
                   <div
                     style={{
-                      background: isUser
-                        ? "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)"
-                        : "#141E30",
+                      background: isUser ? "#7A0012" : "#141E30",
                       color: "#EEF0F8",
                       borderRadius: isUser ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
                       padding: "8px 12px",
