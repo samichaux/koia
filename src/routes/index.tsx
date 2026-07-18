@@ -345,7 +345,7 @@ function IPhoneMockup() {
                       maxWidth: "78%",
                       fontFamily: "Inter, sans-serif",
                       fontWeight: 300,
-                      fontSize: 11,
+                      fontSize: 10,
                       lineHeight: 1.35,
                       animation: "koia-msg-in 400ms cubic-bezier(0.16,1,0.3,1) both",
                     }}
