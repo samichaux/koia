@@ -75,7 +75,11 @@ export function EmailWaitlistForm({
           <button
             type="button"
             onClick={handleSubmit}
-            className="relative rounded-lg bg-[#C2001E] px-7 py-[14px] text-sm font-medium uppercase tracking-[0.05em] text-white transition-all duration-200 hover:brightness-[1.15] hover:scale-[1.02]"
+            className="relative rounded-lg px-7 py-[14px] text-sm font-medium uppercase tracking-[0.05em] text-white transition-all duration-200 hover:brightness-[1.15] hover:scale-[1.02]"
+            style={{
+              background:
+                "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
+            }}
           >
             Rejoindre la bêta
           </button>

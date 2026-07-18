@@ -77,18 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Koia — Le coach IA qui s'adapte vraiment à toi" },
+      { title: "KOIA — Le coach IA qui s'adapte vraiment à toi" },
       {
         name: "description",
         content:
-          "Koia, le coach IA fitness qui s'adapte à toi. Programmes personnalisés, raisonnement transparent, zéro bullshit. Rejoins la bêta privée.",
+          "KOIA, le coach IA fitness qui s'adapte à toi. Programmes personnalisés, raisonnement transparent, zéro bullshit. Rejoins la bêta privée.",
       },
-      { name: "author", content: "Koia" },
-      { property: "og:title", content: "Koia — Le coach IA qui s'adapte vraiment à toi" },
+      { name: "author", content: "KOIA" },
+      { property: "og:title", content: "KOIA — Le coach IA qui s'adapte vraiment à toi" },
       {
         property: "og:description",
         content:
-          "Programmes personnalisés. Raisonnement transparent. Zéro bullshit. Rejoins la bêta privée de Koia.",
+          "Programmes personnalisés. Raisonnement transparent. Zéro bullshit. Rejoins la bêta privée de KOIA.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

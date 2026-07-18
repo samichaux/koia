@@ -38,32 +38,32 @@ const credibility = [
 
 const faqs = [
   {
-    q: "Koia est-elle une app de musculation ou de fitness ?",
-    a: "Les deux. Koia génère des programmes adaptés à tes objectifs — prise de muscle, perte de gras, condition physique. Le coach IA s'adapte à ton niveau et ton équipement.",
+    q: "KOIA est-elle une app de musculation ou de fitness ?",
+    a: "Les deux. KOIA génère des programmes adaptés à tes objectifs — prise de muscle, perte de gras, condition physique. Le coach IA s'adapte à ton niveau et ton équipement.",
   },
   {
     q: "Pourquoi ne pas utiliser ChatGPT pour mon programme ?",
-    a: "Tu peux, mais sans le bon prompt, ChatGPT généralise — il ignore ta morphologie, tes blessures, ton cycle. Koia intègre un system prompt expert : onboarding structuré, gestion des blessures, adaptation hormonale, protocole RPE. Tu parles normalement, le coaching est intégré.",
+    a: "Tu peux, mais sans le bon prompt, ChatGPT généralise — il ignore ta morphologie, tes blessures, ton cycle. KOIA intègre un system prompt expert : onboarding structuré, gestion des blessures, adaptation hormonale, protocole RPE. Tu parles normalement, le coaching est intégré.",
   },
   {
-    q: "En quoi l'IA de Koia est différente des autres apps ?",
-    a: "La plupart des apps utilisent un quiz pour générer un programme statique. Koia utilise un agent conversationnel qui comprend ton contexte, s'adapte semaine après semaine, et t'explique chaque choix.",
+    q: "En quoi l'IA de KOIA est différente des autres apps ?",
+    a: "La plupart des apps utilisent un quiz pour générer un programme statique. KOIA utilise un agent conversationnel qui comprend ton contexte, s'adapte semaine après semaine, et t'explique chaque choix.",
   },
   {
-    q: "Koia propose-t-elle un suivi nutritionnel ?",
-    a: "Oui. Tu décris tes repas, Koia les analyse avec des données vérifiées. Pas de comptage obsessionnel — un suivi basé sur les portions et tes objectifs protéiques.",
+    q: "KOIA propose-t-elle un suivi nutritionnel ?",
+    a: "Oui. Tu décris tes repas, KOIA les analyse avec des données vérifiées. Pas de comptage obsessionnel — un suivi basé sur les portions et tes objectifs protéiques.",
   },
   {
-    q: "Koia est-elle adaptée aux femmes ?",
-    a: "Koia est conçue pour tout le monde. Le coach prend en compte les spécificités morphologiques et hormonales de chaque profil, y compris l'adaptation au cycle menstruel.",
+    q: "KOIA est-elle adaptée aux femmes ?",
+    a: "KOIA est conçue pour tout le monde. Le coach prend en compte les spécificités morphologiques et hormonales de chaque profil, y compris l'adaptation au cycle menstruel.",
   },
   {
-    q: "Combien coûtera Koia ?",
+    q: "Combien coûtera KOIA ?",
     a: "Le pricing sera annoncé au lancement. Les membres de la bêta privée bénéficieront de conditions préférentielles.",
   },
   {
-    q: "Quand Koia sera-t-elle disponible ?",
-    a: "Koia est en développement. Rejoins la bêta pour tester en avant-première et influencer le produit.",
+    q: "Quand KOIA sera-t-elle disponible ?",
+    a: "KOIA est en développement. Rejoins la bêta pour tester en avant-première et influencer le produit.",
   },
 ];
 
@@ -308,13 +308,23 @@ function IPhoneMockup() {
               height: 26,
               borderRadius: "50%",
               background: "#0E1525",
-              color: "#C2001E",
               fontFamily: "Inter, sans-serif",
               fontWeight: 500,
               fontSize: 12,
             }}
           >
-            K
+            <span
+              style={{
+                backgroundImage:
+                  "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                color: "transparent",
+              }}
+            >
+              K
+            </span>
           </div>
           <div className="flex flex-col leading-tight">
             <span
@@ -382,10 +392,25 @@ function IPhoneMockup() {
                         fontFamily: "Inter, sans-serif",
                         fontWeight: 500,
                         fontSize: 9,
-                        color: isUser ? "#EEF0F8" : "#C2001E",
+                        color: isUser ? "#EEF0F8" : "transparent",
                       }}
                     >
-                      {isUser ? "S" : "K"}
+                      {isUser ? (
+                        "S"
+                      ) : (
+                        <span
+                          style={{
+                            backgroundImage:
+                              "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
+                            WebkitBackgroundClip: "text",
+                            backgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                            color: "transparent",
+                          }}
+                        >
+                          K
+                        </span>
+                      )}
                     </div>
                   )}
                   <div
@@ -465,7 +490,14 @@ function IPhoneMockup() {
             type="button"
             aria-hidden
             className="flex items-center justify-center"
-            style={{ width: 24, height: 24, borderRadius: "50%", background: "#1E2A40", color: "#EEF0F8" }}
+            style={{
+              width: 24,
+              height: 24,
+              borderRadius: "50%",
+              background:
+                "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
+              color: "#EEF0F8",
+            }}
           >
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
@@ -540,12 +572,12 @@ function Index() {
         <div
           aria-hidden
           className="absolute bottom-8 left-1/2 -translate-x-1/2 h-10 w-px overflow-hidden"
-          style={{ background: "#1A2338" }}
+          style={{ background: "linear-gradient(180deg, #FF2D4B, #7A0012)" }}
         >
           <div
             className="h-2 w-px"
             style={{
-              background: "#EEF0F8",
+              background: "#C2001E",
               animation: "koia-scroll-dot 2.4s ease-in-out infinite",
             }}
           />
@@ -553,7 +585,7 @@ function Index() {
       </section>
 
       {/* PROBLEM */}
-      <section className="border-t border-[#1E2A40]">
+      <section className="koia-section-divider">
         <div className="mx-auto max-w-[1200px] px-6 py-24">
           <RevealOnScroll>
             <Eyebrow>Le problème</Eyebrow>
@@ -594,7 +626,7 @@ function Index() {
       </section>
 
       {/* DIFFERENCE — Bento */}
-      <section className="border-t border-[#1E2A40]">
+      <section className="koia-section-divider">
         <div className="mx-auto max-w-[1200px] px-6 py-24">
           <RevealOnScroll>
             <Eyebrow>La différence</Eyebrow>
@@ -607,14 +639,14 @@ function Index() {
             {/* Card 1 — full width */}
             <RevealOnScroll className="md:col-span-2">
               <div
-                className="group rounded-xl border border-[#1E2A40] bg-[#0E1525] p-8 md:p-12 transition-colors duration-300 hover:border-[rgba(238,240,248,0.1)]"
+                className="group koia-card-grad rounded-xl border border-[#1E2A40] bg-[#0E1525] p-8 md:p-12 "
                 style={{ transitionTimingFunction: easing }}
               >
                 <h3 className="text-xl font-medium text-[#EEF0F8]">
                   L'IA, mais bien promptée.
                 </h3>
                 <p className="mt-4 max-w-[540px] font-light text-base leading-relaxed text-[#4A5872]">
-                  Koia, c'est un agent IA construit avec un system prompt de coaching expert — onboarding structuré, gestion des blessures, adaptation morphologique et hormonale, protocole RPE. Tu parles normalement, l'IA fait le travail de fond.
+                  KOIA, c'est un agent IA construit avec un system prompt de coaching expert — onboarding structuré, gestion des blessures, adaptation morphologique et hormonale, protocole RPE. Tu parles normalement, l'IA fait le travail de fond.
                 </p>
 
                 <div className="mt-10 grid gap-8 md:grid-cols-[1fr_1px_1fr]">
@@ -637,9 +669,9 @@ function Index() {
                   </div>
                   {/* Separator */}
                   <div className="hidden md:block h-full w-px bg-[#1E2A40]" />
-                  {/* Koia */}
+                  {/* KOIA */}
                   <div>
-                    <div className="mb-4 text-xs font-normal text-[#C2001E]">Koia</div>
+                    <div className="mb-4 text-xs font-normal text-[#C2001E]">KOIA</div>
                     <div
                       className="rounded-lg px-3.5 py-2.5 text-sm font-light text-[#EEF0F8] max-w-[90%]"
                       style={{ background: "rgba(194,0,30,0.04)" }}
@@ -661,12 +693,12 @@ function Index() {
             {/* Card 2 */}
             <RevealOnScroll delay={100}>
               <div
-                className="h-full rounded-xl border border-[#1E2A40] bg-[#0E1525] p-9 transition-colors duration-300 hover:border-[rgba(238,240,248,0.1)]"
+                className="h-full koia-card-grad rounded-xl border border-[#1E2A40] bg-[#0E1525] p-9 "
                 style={{ transitionTimingFunction: easing }}
               >
                 <h3 className="text-lg font-medium text-[#EEF0F8]">Raisonnement transparent</h3>
                 <p className="mt-4 font-light text-sm leading-relaxed text-[#4A5872]">
-                  Chaque exercice choisi pour une raison. Koia t'explique pourquoi, avec le
+                  Chaque exercice choisi pour une raison. KOIA t'explique pourquoi, avec le
                   niveau de preuve. Si la science n'est pas claire, il te le dit.
                 </p>
                 <span
@@ -684,12 +716,12 @@ function Index() {
             {/* Card 3 */}
             <RevealOnScroll delay={200}>
               <div
-                className="h-full rounded-xl border border-[#1E2A40] bg-[#0E1525] p-9 transition-colors duration-300 hover:border-[rgba(238,240,248,0.1)]"
+                className="h-full koia-card-grad rounded-xl border border-[#1E2A40] bg-[#0E1525] p-9 "
                 style={{ transitionTimingFunction: easing }}
               >
                 <h3 className="text-lg font-medium text-[#EEF0F8]">Suivi repas sans prise de tête</h3>
                 <p className="mt-4 font-light text-sm leading-relaxed text-[#4A5872]">
-                  Décris ce que tu manges, Koia analyse. Pas de comptage obsessionnel — un suivi basé sur les portions et tes objectifs protéiques.
+                  Décris ce que tu manges, KOIA analyse. Pas de comptage obsessionnel — un suivi basé sur les portions et tes objectifs protéiques.
                 </p>
                 <div className="mt-6 space-y-1.5">
                   <p className="font-light text-xs text-[#4A5872]">🍗 Poulet grillé 150g → ~45g protéines</p>
@@ -703,7 +735,7 @@ function Index() {
       </section>
 
       {/* CREDIBILITY */}
-      <section className="border-t border-[#1E2A40]">
+      <section className="koia-section-divider">
         <div className="mx-auto max-w-[1200px] px-6 py-20">
           <RevealOnScroll>
             <Eyebrow>Les fondations</Eyebrow>
@@ -724,7 +756,7 @@ function Index() {
       </section>
 
       {/* FAQ */}
-      <section className="border-t border-[#1E2A40]">
+      <section className="koia-section-divider">
         <div className="mx-auto max-w-[1200px] px-6 py-24">
           <RevealOnScroll>
             <Eyebrow>Questions</Eyebrow>
@@ -739,7 +771,7 @@ function Index() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="relative border-t border-[#1E2A40] overflow-hidden">
+      <section className="relative koia-section-divider overflow-hidden">
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full"
@@ -777,9 +809,9 @@ function Index() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-[#1E2A40]">
+      <footer className="koia-section-divider">
         <div className="mx-auto max-w-[1200px] px-6 py-12 text-center text-xs font-light text-[#1A2338]">
-          © 2026 Koia
+          © 2026 KOIA
         </div>
       </footer>
     </main>
