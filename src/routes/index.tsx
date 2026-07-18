@@ -892,13 +892,11 @@ function Index() {
           <RevealOnScroll>
             <Eyebrow>La différence</Eyebrow>
           </RevealOnScroll>
-          <RevealOnScroll>
-            <AccentHeadline before="Un coach qui" accent="mérite" after="le nom" />
-          </RevealOnScroll>
+          <WordReveal text="Un coach qui mérite le nom" />
 
           <div className="mt-16 grid gap-5 md:grid-cols-2">
             {/* Card 1 — full width */}
-            <RevealOnScroll className="md:col-span-2">
+            <BentoReveal variant="scale" className="md:col-span-2">
               <div
                 className="group koia-card-grad rounded-xl border border-[#1E2A40] bg-[#0E1525] p-8 md:p-12 "
                 style={{ transitionTimingFunction: easing }}
