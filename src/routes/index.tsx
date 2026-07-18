@@ -165,19 +165,36 @@ function AccentHeadline({
 
 function IPhoneMockup() {
   const messages = [
-    { from: "koia", text: "Prête pour ta séance ? Full Body A aujourd'hui 💪", delay: 500 },
-    { from: "user", text: "oui mais g mal au genou droit depuis hier", delay: 1800 },
     {
       from: "koia",
-      text: "Ok on adapte. Je retire le squat bulgare, remplacé par hip thrust — pas de flexion profonde.",
-      delay: 3200,
+      text: "Salut ! Je suis ton coach. Pour construire ton programme, j'ai quelques questions. C'est quoi ton objectif principal ?",
+      delay: 500,
+    },
+    {
+      from: "user",
+      text: "recomp, je veux perdre du gras et raffermir surtout les fessiers",
+      delay: 2000,
     },
     {
       from: "koia",
-      text: "RPE 6 au lieu de 8 aujourd'hui. Si ça persiste demain, va consulter.",
-      delay: 4200,
+      text: "Noté. Tu t'entraînes depuis combien de temps ? Et tu as des blessures ou douleurs actuelles ?",
+      delay: 3500,
     },
-    { from: "user", text: "Nickel 👍", delay: 5500 },
+    {
+      from: "user",
+      text: "10 ans, j'ai une douleur au genou droit en ce moment",
+      delay: 5000,
+    },
+    {
+      from: "koia",
+      text: "Avec ton expérience je pars sur un Full Body 3×/sem. Pour le genou : pas de squat profond, on privilégie hip thrust et leg press partiel.",
+      delay: 6500,
+    },
+    {
+      from: "koia",
+      text: "J'ai aussi détecté que tu as un dos dominant — je retire les tractions pour équilibrer tes proportions. Voici ton programme ↓",
+      delay: 7500,
+    },
   ] as const;
 
   const TYPING_MS = 600;
