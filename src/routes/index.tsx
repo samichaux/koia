@@ -9,7 +9,6 @@ export const Route = createFileRoute("/")({
 });
 
 const bebas = { fontFamily: "'Bebas Neue', sans-serif" } as const;
-const serif = { fontFamily: "'Instrument Serif', serif", fontStyle: "italic" } as const;
 const easing = "cubic-bezier(0.16,1,0.3,1)";
 
 const problems = [
@@ -76,7 +75,7 @@ function HeroHeadline() {
     { t: "QUI", f: "bebas" },
     { t: "S'ADAPTE", f: "bebas" },
     { t: "\n", f: "br" },
-    { t: "vraiment", f: "serif" },
+    { t: "VRAIMENT", f: "gradient" },
     { t: "À", f: "bebas" },
     { t: "TOI", f: "bebas" },
   ];
@@ -102,7 +101,7 @@ function HeroHeadline() {
       {words.map((w, i) => {
         if (w.f === "br") return <br key={i} />;
         const visible = i < shown;
-        const isSerif = w.f === "serif";
+        const isGradient = w.f === "gradient";
         return (
           <span
             key={i}
@@ -112,13 +111,14 @@ function HeroHeadline() {
               opacity: visible ? 1 : 0,
               transform: visible ? "translateY(0)" : "translateY(20px)",
               marginRight: "0.25em",
-              ...(isSerif
+              ...(isGradient
                 ? {
-                    fontFamily: "'Instrument Serif', serif",
-                    fontStyle: "italic",
-                    textTransform: "lowercase",
-                    color: "#C2001E",
-                    letterSpacing: "0",
+                    backgroundImage:
+                      "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    color: "transparent",
                   }
                 : {}),
             }}
@@ -157,7 +157,7 @@ function AccentHeadline({
     <h2 className={`uppercase text-[#EEF0F8] ${size}`} style={{ ...bebas, lineHeight: 0.95, letterSpacing: "0.02em" }}>
       {before}
       {before ? " " : ""}
-      <span style={{ ...serif, textTransform: "lowercase", color: "#C2001E" }}>{accent}</span>
+      <span>{accent}</span>
       {after ? ` ${after}` : ""}
     </h2>
   );
@@ -550,9 +550,7 @@ function Index() {
               Prêt·e à essayer un coach
               <br />
               qui ne{" "}
-              <span style={{ ...serif, textTransform: "lowercase", color: "#C2001E" }}>
-                ment
-              </span>{" "}
+              <span>MENT</span>{" "}
               pas ?
             </h2>
           </RevealOnScroll>
