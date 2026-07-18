@@ -926,16 +926,33 @@ function Index() {
     <main className="relative bg-[#04070F] text-[#EEF0F8] overflow-x-hidden">
       {/* HERO */}
       <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=70&auto=format&fit=crop"
+          alt=""
+          aria-hidden
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ filter: "saturate(0.4) brightness(0.7)", zIndex: 0 }}
+        />
         <div
           aria-hidden
-          className="pointer-events-none absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full"
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(4,7,15,0.92) 0%, rgba(4,7,15,0.85) 50%, rgba(4,7,15,0.7) 100%)",
+            zIndex: 0,
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full z-0"
           style={{
             background: "rgba(194,0,30,0.06)",
             filter: "blur(120px)",
             animation: "koia-glow-drift 8s ease-in-out infinite",
           }}
         />
-        <div className="relative mx-auto w-full max-w-[1200px] px-6 md:pl-[8%] md:pr-8 py-24">
+        <div className="relative z-10 mx-auto w-full max-w-[1200px] px-6 md:pl-[8%] md:pr-8 py-24">
           <div className="grid gap-16 md:grid-cols-[55fr_45fr] md:items-center">
             {/* Left: text + form */}
             <div className="text-left max-md:text-center">
