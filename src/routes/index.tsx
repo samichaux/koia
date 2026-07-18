@@ -101,8 +101,21 @@ function MotivationalDivider() {
   const line1Duration = line1.length * 100;
   const beatPause = 400;
   return (
-    <section className="py-16 koia-motiv" ref={ref}>
-      <div className="relative mx-auto max-w-[1200px] px-6 text-center">
+    <section className="relative py-16 koia-motiv overflow-hidden" ref={ref}>
+      <img
+        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=70&auto=format&fit=crop"
+        alt=""
+        aria-hidden
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover"
+        style={{ filter: "saturate(0.4) brightness(0.7)", zIndex: 0 }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{ background: "rgba(4,7,15,0.88)", zIndex: 1 }}
+      />
+      <div className="relative z-10 mx-auto max-w-[1200px] px-6 text-center">
         <h2 className="uppercase" style={{ ...bebas, color: "#2A3448", lineHeight: 0.95, letterSpacing: "0.02em" }}>
           {line1.map((w, i) => (
             <span key={i} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.25em", paddingBottom: "0.05em" }}>
@@ -885,6 +898,374 @@ function IPhoneMockup() {
   );
 }
 
+function MiniChatBubble({
+  side,
+  variant,
+  children,
+}: {
+  side: "user" | "ai";
+  variant: "chatgpt" | "koia-user" | "koia-ai";
+  children: React.ReactNode;
+}) {
+  const isUser = side === "user";
+  const bg =
+    variant === "chatgpt"
+      ? "rgba(255,255,255,0.04)"
+      : variant === "koia-user"
+        ? "linear-gradient(135deg, rgba(255,45,75,0.22) 0%, rgba(194,0,30,0.16) 40%, rgba(122,0,18,0.12) 100%)"
+        : "#0E1525";
+  return (
+    <div
+      className={`flex ${isUser ? "justify-end" : "justify-start"}`}
+      style={{ marginBottom: 4 }}
+    >
+      <div
+        style={{
+          background: bg,
+          color: "#EEF0F8",
+          borderRadius: isUser ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
+          padding: "6px 10px",
+          maxWidth: "88%",
+          fontFamily: "Inter, sans-serif",
+          fontWeight: 300,
+          fontSize: 10,
+          lineHeight: 1.4,
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function PhoneFrame({
+  label,
+  variant,
+  children,
+  footer,
+  mark,
+}: {
+  label: string;
+  variant: "off" | "on";
+  children: React.ReactNode;
+  footer: React.ReactNode;
+  mark: "cross" | "check";
+}) {
+  return (
+    <div className="w-full max-w-[260px]">
+      <div className="mb-2 text-[10px] font-medium uppercase tracking-[0.18em] text-[#6B7A99]">
+        {label}
+      </div>
+      <div
+        className="relative"
+        style={{
+          width: "100%",
+          background: "#0E1525",
+          borderRadius: 14,
+          padding: 16,
+          border: variant === "on" ? "1px solid transparent" : "1px solid #1E2A40",
+          borderImage:
+            variant === "on"
+              ? "linear-gradient(135deg, rgba(255,45,75,0.35), rgba(194,0,30,0.2), rgba(122,0,18,0.1)) 1"
+              : undefined,
+          overflow: "hidden",
+        }}
+      >
+        {mark === "cross" ? (
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 flex items-center justify-center"
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 300,
+              fontSize: 120,
+              color: "rgba(194,0,30,0.10)",
+              lineHeight: 1,
+            }}
+          >
+            ✗
+          </div>
+        ) : (
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 flex items-center justify-center"
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 300,
+              fontSize: 120,
+              lineHeight: 1,
+              backgroundImage:
+                "linear-gradient(135deg, rgba(255,45,75,0.14), rgba(122,0,18,0.06))",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              color: "transparent",
+            }}
+          >
+            ✓
+          </div>
+        )}
+        <div className="relative">{children}</div>
+      </div>
+      <div className="mt-2 text-xs" style={{ color: variant === "on" ? "#EEF0F8" : "#6B7A99" }}>
+        {footer}
+      </div>
+    </div>
+  );
+}
+
+function DifferenceBlock1() {
+  const { ref, visible } = useInView<HTMLDivElement>(0.2);
+  return (
+    <div
+      ref={ref}
+      className="grid gap-10 md:grid-cols-[55fr_45fr] md:items-center"
+    >
+      <div className="flex flex-col items-center gap-6 md:items-start">
+        <div
+          style={{
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateX(0)" : "translateX(-30px)",
+            transition: `opacity 600ms ${easing}, transform 600ms ${easing}`,
+          }}
+        >
+          <PhoneFrame
+            label="Sans KOIA"
+            variant="off"
+            mark="cross"
+            footer="Générique · Pas de contexte"
+          >
+            <MiniChatBubble side="user" variant="chatgpt">
+              Fais-moi un programme de muscu
+            </MiniChatBubble>
+            <MiniChatBubble side="ai" variant="chatgpt">
+              Jour 1 — Bench press 4×10, Shoulder press 3×12, Triceps pushdown 3×15...
+            </MiniChatBubble>
+          </PhoneFrame>
+        </div>
+        <div
+          style={{
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateX(0)" : "translateX(-30px)",
+            transition: `opacity 600ms ${easing} 200ms, transform 600ms ${easing} 200ms`,
+          }}
+        >
+          <PhoneFrame
+            label="Avec KOIA"
+            variant="on"
+            mark="check"
+            footer={
+              <span
+                style={{
+                  backgroundImage:
+                    "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  color: "transparent",
+                }}
+              >
+                Adapté · Contextualisé · Sourcé
+              </span>
+            }
+          >
+            <MiniChatBubble side="user" variant="koia-user">
+              j'ai mal au genou droit
+            </MiniChatBubble>
+            <MiniChatBubble side="ai" variant="koia-ai">
+              Je remplace le squat bulgare par du hip thrust. RPE 6 aujourd'hui. Si ça persiste → consulte.
+            </MiniChatBubble>
+          </PhoneFrame>
+        </div>
+      </div>
+      <div
+        style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0)" : "translateY(20px)",
+          transition: `opacity 700ms ${easing} 300ms, transform 700ms ${easing} 300ms`,
+        }}
+      >
+        <h3
+          className="uppercase text-[#EEF0F8]"
+          style={{ ...bebas, fontSize: "1.75rem", lineHeight: 1.05, letterSpacing: "0.02em" }}
+        >
+          L'IA, mais bien promptée
+        </h3>
+        <p className="mt-4 font-light text-sm leading-relaxed text-[#8A96B0]">
+          KOIA est un agent IA avec un system prompt de coaching expert. Tu parles normalement,
+          le coaching est intégré — onboarding, blessures, morphologie, protocole RPE.
+        </p>
+        <div
+          className="mt-6 pl-3"
+          style={{
+            borderLeft: "2px solid transparent",
+            borderImage:
+              "linear-gradient(180deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%) 1",
+          }}
+        >
+          <p className="text-xs font-normal text-[#EEF0F8]">
+            System prompt : 6 blocs · 47 règles · 0 bullshit
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DifferenceBlock2() {
+  const { ref, visible } = useInView<HTMLDivElement>(0.2);
+  return (
+    <div
+      ref={ref}
+      className="relative overflow-hidden rounded-xl"
+      style={{
+        minHeight: 200,
+        opacity: visible ? 1 : 0,
+        transform: visible ? "scale(1)" : "scale(0.97)",
+        transition: `opacity 700ms ${easing}, transform 700ms ${easing}`,
+      }}
+    >
+      <img
+        src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=1600&q=70&auto=format&fit=crop"
+        alt=""
+        aria-hidden
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover"
+        style={{ filter: "saturate(0.3) brightness(0.5)" }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(4,7,15,0.95) 0%, rgba(4,7,15,0.7) 60%, rgba(4,7,15,0.4) 100%)",
+        }}
+      />
+      <div className="relative z-10 max-w-[520px] p-10">
+        <h3
+          className="uppercase text-[#EEF0F8]"
+          style={{ ...bebas, fontSize: "1.5rem", lineHeight: 1.05, letterSpacing: "0.02em" }}
+        >
+          Raisonnement transparent
+        </h3>
+        <p className="mt-3 font-light text-sm leading-relaxed text-[#8A96B0] max-w-[400px]">
+          Chaque exercice est choisi pour une raison. KOIA t'explique pourquoi, avec le niveau de preuve.
+        </p>
+        <div className="mt-5 flex flex-wrap gap-2">
+          {[
+            { t: "Méta-analyse ✓", dim: false },
+            { t: "Étude RCT ✓", dim: false },
+            { t: "Consensus expert ✓", dim: true },
+          ].map((p) => (
+            <span
+              key={p.t}
+              className="inline-block rounded-full text-xs text-[#EEF0F8]"
+              style={{
+                background: "rgba(194,0,30,0.1)",
+                border: "1px solid rgba(194,0,30,0.2)",
+                padding: "4px 12px",
+                opacity: p.dim ? 0.6 : 1,
+              }}
+            >
+              {p.t}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DifferenceBlock3() {
+  const { ref, visible } = useInView<HTMLDivElement>(0.2);
+  return (
+    <div ref={ref} className="mx-auto w-full max-w-[560px]">
+      <div
+        className="rounded-xl border border-[#1E2A40] bg-[#0E1525] p-8"
+        style={{ transitionTimingFunction: easing }}
+      >
+        <div className="grid gap-6 md:grid-cols-2 md:items-center">
+          <div
+            style={{
+              opacity: visible ? 1 : 0,
+              transform: visible ? "translateX(0)" : "translateX(-20px)",
+              transition: `opacity 600ms ${easing}, transform 600ms ${easing}`,
+            }}
+          >
+            <h3
+              className="uppercase text-[#EEF0F8]"
+              style={{ ...bebas, fontSize: "1.25rem", lineHeight: 1.05, letterSpacing: "0.02em" }}
+            >
+              Suivi repas sans prise de tête
+            </h3>
+            <p className="mt-3 font-light text-sm leading-relaxed text-[#8A96B0]">
+              Décris ce que tu manges. KOIA analyse. Pas de comptage obsessionnel.
+            </p>
+          </div>
+          <div
+            style={{
+              opacity: visible ? 1 : 0,
+              transform: visible ? "translateX(0)" : "translateX(20px)",
+              transition: `opacity 600ms ${easing} 150ms, transform 600ms ${easing} 150ms`,
+            }}
+          >
+            <div
+              className="rounded-lg"
+              style={{ background: "#141D30", padding: 14 }}
+            >
+              <div className="text-xs font-normal text-[#EEF0F8]">Déjeuner — Mardi</div>
+              <div className="my-2 h-px" style={{ background: "#1E2A40" }} />
+              {[
+                ["Poulet grillé 150g", "45g prot"],
+                ["Riz basmati", "4g prot"],
+                ["Salade verte", "2g prot"],
+              ].map(([l, r]) => (
+                <div key={l} className="flex justify-between text-xs" style={{ padding: "2px 0" }}>
+                  <span className="font-light text-[#8A96B0]">{l}</span>
+                  <span className="text-[#EEF0F8]" style={{ fontWeight: 300 }}>{r}</span>
+                </div>
+              ))}
+              <div className="my-2 h-px" style={{ background: "#1E2A40" }} />
+              <div className="flex justify-between text-xs" style={{ fontWeight: 500 }}>
+                <span className="text-[#8A96B0]">Total repas</span>
+                <span>
+                  <span
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
+                      WebkitBackgroundClip: "text",
+                      backgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      color: "transparent",
+                    }}
+                  >
+                    51g
+                  </span>
+                  <span className="text-[#8A96B0] font-light"> / 110g</span>
+                </span>
+              </div>
+              <div
+                className="mt-2 rounded-full"
+                style={{ background: "#1E2A40", height: 3 }}
+              >
+                <div
+                  className="rounded-full"
+                  style={{
+                    width: "46%",
+                    height: 3,
+                    background:
+                      "linear-gradient(90deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   const problemsRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [visibleProblems, setVisibleProblems] = useState<Set<number>>(new Set());
@@ -913,16 +1294,33 @@ function Index() {
     <main className="relative bg-[#04070F] text-[#EEF0F8] overflow-x-hidden">
       {/* HERO */}
       <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=70&auto=format&fit=crop"
+          alt=""
+          aria-hidden
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ filter: "saturate(0.4) brightness(0.7)", zIndex: 0 }}
+        />
         <div
           aria-hidden
-          className="pointer-events-none absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full"
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(4,7,15,0.92) 0%, rgba(4,7,15,0.85) 50%, rgba(4,7,15,0.7) 100%)",
+            zIndex: 0,
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full z-0"
           style={{
             background: "rgba(194,0,30,0.06)",
             filter: "blur(120px)",
             animation: "koia-glow-drift 8s ease-in-out infinite",
           }}
         />
-        <div className="relative mx-auto w-full max-w-[1200px] px-6 md:pl-[8%] md:pr-8 py-24">
+        <div className="relative z-10 mx-auto w-full max-w-[1200px] px-6 md:pl-[8%] md:pr-8 py-24">
           <div className="grid gap-16 md:grid-cols-[55fr_45fr] md:items-center">
             {/* Left: text + form */}
             <div className="text-left max-md:text-center">
@@ -1019,101 +1417,10 @@ function Index() {
           </RevealOnScroll>
           <WordReveal text="Un coach qui mérite le nom" />
 
-          <div className="mt-16 grid gap-5 md:grid-cols-2">
-            {/* Card 1 — full width */}
-            <BentoReveal variant="scale" className="md:col-span-2">
-              <div
-                className="group koia-card-grad rounded-xl border border-[#1E2A40] bg-[#0E1525] p-8 md:p-12 "
-                style={{ transitionTimingFunction: easing }}
-              >
-                <h3 className="text-xl font-medium text-[#EEF0F8]">
-                  L'IA, mais bien promptée.
-                </h3>
-                <p className="mt-4 max-w-[540px] font-light text-base leading-relaxed text-[#8A96B0]">
-                  KOIA, c'est un agent IA construit avec un system prompt de coaching expert — onboarding structuré, gestion des blessures, adaptation morphologique et hormonale, protocole RPE. Tu parles normalement, l'IA fait le travail de fond.
-                </p>
-
-                <div className="mt-10 grid gap-8 md:grid-cols-[1fr_1px_1fr]">
-                  {/* ChatGPT */}
-                  <div>
-                    <div className="mb-4 text-xs font-normal text-[#6B7A99]">ChatGPT</div>
-                    <div
-                      className="rounded-lg px-3.5 py-2.5 text-sm font-light text-[#8A96B0] max-w-[90%]"
-                      style={{ background: "rgba(238,240,248,0.03)" }}
-                    >
-                      Fais-moi un programme de muscu
-                    </div>
-                    <div
-                      className="mt-2 ml-auto rounded-lg px-3.5 py-2.5 text-sm font-light text-[#8A96B0]"
-                      style={{ background: "rgba(238,240,248,0.03)" }}
-                    >
-                      Jour 1 — Bench press 4×10, Shoulder press 3×12, Triceps pushdown 3×15...
-                    </div>
-                    <div className="mt-3 text-xs text-[#6B7A99]">Générique · Pas de contexte</div>
-                  </div>
-                  {/* Separator */}
-                  <div className="hidden md:block h-full w-px bg-[#1E2A40]" />
-                  {/* KOIA */}
-                  <div>
-                    <div className="mb-4 text-xs font-normal text-[#C2001E]">KOIA</div>
-                    <div
-                      className="rounded-lg px-3.5 py-2.5 text-sm font-light text-[#EEF0F8] max-w-[90%]"
-                      style={{ background: "rgba(194,0,30,0.04)" }}
-                    >
-                      J'ai mal au genou droit depuis hier
-                    </div>
-                    <div
-                      className="mt-2 ml-auto rounded-lg px-3.5 py-2.5 text-sm font-light text-[#EEF0F8]"
-                      style={{ background: "rgba(194,0,30,0.04)" }}
-                    >
-                      On remplace le squat bulgare par du hip thrust. Pas de flexion profonde cette semaine. RPE 6. Si ça persiste 48h → consulte.
-                    </div>
-                    <div className="mt-3 text-xs text-[#8A96B0]">Contextualisé · Adapté · Sourcé</div>
-                  </div>
-                </div>
-              </div>
-            </BentoReveal>
-
-            {/* Card 2 */}
-            <BentoReveal variant="up" delay={150}>
-              <div
-                className="h-full koia-card-grad rounded-xl border border-[#1E2A40] bg-[#0E1525] p-9 "
-                style={{ transitionTimingFunction: easing }}
-              >
-                <h3 className="text-lg font-medium text-[#EEF0F8]">Raisonnement transparent</h3>
-                <p className="mt-4 font-light text-sm leading-relaxed text-[#8A96B0]">
-                  Chaque exercice choisi pour une raison. KOIA t'explique pourquoi, avec le
-                  niveau de preuve. Si la science n'est pas claire, il te le dit.
-                </p>
-                <span
-                  className="mt-6 inline-block rounded-full px-3 py-1 text-xs font-normal text-[#8A96B0]"
-                  style={{
-                    background: "rgba(194,0,30,0.04)",
-                    border: "1px solid rgba(194,0,30,0.12)",
-                  }}
-                >
-                  [Preuve : méta-analyse 2018, Schoenfeld et al.]
-                </span>
-              </div>
-            </BentoReveal>
-
-            {/* Card 3 */}
-            <BentoReveal variant="up" delay={300}>
-              <div
-                className="h-full koia-card-grad rounded-xl border border-[#1E2A40] bg-[#0E1525] p-9 "
-                style={{ transitionTimingFunction: easing }}
-              >
-                <h3 className="text-lg font-medium text-[#EEF0F8]">Suivi repas sans prise de tête</h3>
-                <p className="mt-4 font-light text-sm leading-relaxed text-[#8A96B0]">
-                  Décris ce que tu manges, KOIA analyse. Pas de comptage obsessionnel — un suivi basé sur les portions et tes objectifs protéiques.
-                </p>
-                <div className="mt-6 space-y-1.5">
-                  <p className="font-light text-xs text-[#8A96B0]">🍗 Poulet grillé 150g → ~45g protéines</p>
-                  <p className="font-light text-xs text-[#8A96B0]">🥗 Salade composée → ~18g protéines</p>
-                  <p className="text-xs font-normal text-[#EEF0F8]">📊 Total : 63g / 110g cible</p>
-                </div>
-              </div>
-            </BentoReveal>
+          <div className="mt-16 flex flex-col gap-[60px]">
+            <DifferenceBlock1 />
+            <DifferenceBlock2 />
+            <DifferenceBlock3 />
           </div>
         </div>
       </section>
@@ -1157,12 +1464,25 @@ function Index() {
 
       {/* FINAL CTA */}
       <section className="relative koia-section-divider overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1920&q=70&auto=format&fit=crop"
+          alt=""
+          aria-hidden
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ filter: "saturate(0.4) brightness(0.7)", zIndex: 0 }}
+        />
         <div
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          className="absolute inset-0"
+          style={{ background: "rgba(4,7,15,0.92)", zIndex: 0 }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full z-0"
           style={{ background: "rgba(194,0,30,0.04)", filter: "blur(100px)" }}
         />
-        <div className="relative mx-auto max-w-[900px] px-6 py-32 text-center">
+        <div className="relative z-10 mx-auto max-w-[900px] px-6 py-32 text-center">
           <ScaleReveal>
             <h2
               className="uppercase text-[#EEF0F8]"
