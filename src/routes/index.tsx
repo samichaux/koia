@@ -420,7 +420,10 @@ function IPhoneMockup() {
                 <div
                   className="flex items-center gap-1"
                   style={{
-                    background: typingSide === "user" ? "rgba(194, 0, 30, 0.18)" : "#141E30",
+                    background:
+                      typingSide === "user"
+                        ? "linear-gradient(135deg, rgba(255, 45, 75, 0.15) 0%, rgba(194, 0, 30, 0.12) 40%, rgba(122, 0, 18, 0.10) 100%)"
+                        : "#141E30",
                     borderRadius: typingSide === "user" ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
                     padding: "8px 12px",
                   }}
