@@ -69,8 +69,8 @@ export function EmailWaitlistForm({
         <div className="relative">
           <div
             aria-hidden
-            className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[60px] w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-            style={{ background: "rgba(194,0,30,0.25)", filter: "blur(40px)" }}
+            className="koia-cta-glow pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[60px] w-[200px] rounded-full"
+            style={{ background: "rgba(194,0,30,0.25)", filter: "blur(40px)", transform: "translate(-50%, -50%)" }}
           />
           <button
             type="button"
