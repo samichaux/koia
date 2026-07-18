@@ -1062,9 +1062,9 @@ function Index() {
             <div className="flex gap-8 md:gap-10 overflow-x-auto md:overflow-visible md:justify-between items-center pb-2 -mx-6 px-6">
               {credibility.map((c, i) => (
                 <div key={i} className="flex items-center gap-8 md:gap-10 shrink-0 md:shrink">
-                  <p className="font-light text-sm text-[#6B7A99] max-w-[260px]">{c}</p>
+                  <p className="font-light text-sm text-[#B4BFD3] max-w-[260px]">{c}</p>
                   {i < credibility.length - 1 ? (
-                    <div className="hidden md:block h-10 w-px shrink-0" style={{ background: "#6B7A99" }} />
+                    <div className="hidden md:block h-10 w-px shrink-0" style={{ background: "#2A3654" }} />
                   ) : null}
                 </div>
               ))}
