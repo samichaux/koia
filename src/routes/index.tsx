@@ -38,32 +38,32 @@ const credibility = [
 
 const faqs = [
   {
-    q: "Koia est-elle une app de musculation ou de fitness ?",
-    a: "Les deux. Koia génère des programmes adaptés à tes objectifs — prise de muscle, perte de gras, condition physique. Le coach IA s'adapte à ton niveau et ton équipement.",
+    q: "KOIA est-elle une app de musculation ou de fitness ?",
+    a: "Les deux. KOIA génère des programmes adaptés à tes objectifs — prise de muscle, perte de gras, condition physique. Le coach IA s'adapte à ton niveau et ton équipement.",
   },
   {
     q: "Pourquoi ne pas utiliser ChatGPT pour mon programme ?",
-    a: "Tu peux, mais sans le bon prompt, ChatGPT généralise — il ignore ta morphologie, tes blessures, ton cycle. Koia intègre un system prompt expert : onboarding structuré, gestion des blessures, adaptation hormonale, protocole RPE. Tu parles normalement, le coaching est intégré.",
+    a: "Tu peux, mais sans le bon prompt, ChatGPT généralise — il ignore ta morphologie, tes blessures, ton cycle. KOIA intègre un system prompt expert : onboarding structuré, gestion des blessures, adaptation hormonale, protocole RPE. Tu parles normalement, le coaching est intégré.",
   },
   {
-    q: "En quoi l'IA de Koia est différente des autres apps ?",
-    a: "La plupart des apps utilisent un quiz pour générer un programme statique. Koia utilise un agent conversationnel qui comprend ton contexte, s'adapte semaine après semaine, et t'explique chaque choix.",
+    q: "En quoi l'IA de KOIA est différente des autres apps ?",
+    a: "La plupart des apps utilisent un quiz pour générer un programme statique. KOIA utilise un agent conversationnel qui comprend ton contexte, s'adapte semaine après semaine, et t'explique chaque choix.",
   },
   {
-    q: "Koia propose-t-elle un suivi nutritionnel ?",
-    a: "Oui. Tu décris tes repas, Koia les analyse avec des données vérifiées. Pas de comptage obsessionnel — un suivi basé sur les portions et tes objectifs protéiques.",
+    q: "KOIA propose-t-elle un suivi nutritionnel ?",
+    a: "Oui. Tu décris tes repas, KOIA les analyse avec des données vérifiées. Pas de comptage obsessionnel — un suivi basé sur les portions et tes objectifs protéiques.",
   },
   {
-    q: "Koia est-elle adaptée aux femmes ?",
-    a: "Koia est conçue pour tout le monde. Le coach prend en compte les spécificités morphologiques et hormonales de chaque profil, y compris l'adaptation au cycle menstruel.",
+    q: "KOIA est-elle adaptée aux femmes ?",
+    a: "KOIA est conçue pour tout le monde. Le coach prend en compte les spécificités morphologiques et hormonales de chaque profil, y compris l'adaptation au cycle menstruel.",
   },
   {
-    q: "Combien coûtera Koia ?",
+    q: "Combien coûtera KOIA ?",
     a: "Le pricing sera annoncé au lancement. Les membres de la bêta privée bénéficieront de conditions préférentielles.",
   },
   {
-    q: "Quand Koia sera-t-elle disponible ?",
-    a: "Koia est en développement. Rejoins la bêta pour tester en avant-première et influencer le produit.",
+    q: "Quand KOIA sera-t-elle disponible ?",
+    a: "KOIA est en développement. Rejoins la bêta pour tester en avant-première et influencer le produit.",
   },
 ];
 
@@ -614,7 +614,7 @@ function Index() {
                   L'IA, mais bien promptée.
                 </h3>
                 <p className="mt-4 max-w-[540px] font-light text-base leading-relaxed text-[#4A5872]">
-                  Koia, c'est un agent IA construit avec un system prompt de coaching expert — onboarding structuré, gestion des blessures, adaptation morphologique et hormonale, protocole RPE. Tu parles normalement, l'IA fait le travail de fond.
+                  KOIA, c'est un agent IA construit avec un system prompt de coaching expert — onboarding structuré, gestion des blessures, adaptation morphologique et hormonale, protocole RPE. Tu parles normalement, l'IA fait le travail de fond.
                 </p>
 
                 <div className="mt-10 grid gap-8 md:grid-cols-[1fr_1px_1fr]">
@@ -637,9 +637,9 @@ function Index() {
                   </div>
                   {/* Separator */}
                   <div className="hidden md:block h-full w-px bg-[#1E2A40]" />
-                  {/* Koia */}
+                  {/* KOIA */}
                   <div>
-                    <div className="mb-4 text-xs font-normal text-[#C2001E]">Koia</div>
+                    <div className="mb-4 text-xs font-normal text-[#C2001E]">KOIA</div>
                     <div
                       className="rounded-lg px-3.5 py-2.5 text-sm font-light text-[#EEF0F8] max-w-[90%]"
                       style={{ background: "rgba(194,0,30,0.04)" }}
@@ -666,7 +666,7 @@ function Index() {
               >
                 <h3 className="text-lg font-medium text-[#EEF0F8]">Raisonnement transparent</h3>
                 <p className="mt-4 font-light text-sm leading-relaxed text-[#4A5872]">
-                  Chaque exercice choisi pour une raison. Koia t'explique pourquoi, avec le
+                  Chaque exercice choisi pour une raison. KOIA t'explique pourquoi, avec le
                   niveau de preuve. Si la science n'est pas claire, il te le dit.
                 </p>
                 <span
@@ -689,7 +689,7 @@ function Index() {
               >
                 <h3 className="text-lg font-medium text-[#EEF0F8]">Suivi repas sans prise de tête</h3>
                 <p className="mt-4 font-light text-sm leading-relaxed text-[#4A5872]">
-                  Décris ce que tu manges, Koia analyse. Pas de comptage obsessionnel — un suivi basé sur les portions et tes objectifs protéiques.
+                  Décris ce que tu manges, KOIA analyse. Pas de comptage obsessionnel — un suivi basé sur les portions et tes objectifs protéiques.
                 </p>
                 <div className="mt-6 space-y-1.5">
                   <p className="font-light text-xs text-[#4A5872]">🍗 Poulet grillé 150g → ~45g protéines</p>
@@ -779,7 +779,7 @@ function Index() {
       {/* FOOTER */}
       <footer className="border-t border-[#1E2A40]">
         <div className="mx-auto max-w-[1200px] px-6 py-12 text-center text-xs font-light text-[#1A2338]">
-          © 2026 Koia
+          © 2026 KOIA
         </div>
       </footer>
     </main>
