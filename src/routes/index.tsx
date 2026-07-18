@@ -9,7 +9,6 @@ export const Route = createFileRoute("/")({
 });
 
 const bebas = { fontFamily: "'Bebas Neue', sans-serif" } as const;
-const serif = { fontFamily: "'Instrument Serif', serif", fontStyle: "italic" } as const;
 const easing = "cubic-bezier(0.16,1,0.3,1)";
 
 const problems = [
