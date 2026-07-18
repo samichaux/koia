@@ -1049,101 +1049,10 @@ function Index() {
           </RevealOnScroll>
           <WordReveal text="Un coach qui mérite le nom" />
 
-          <div className="mt-16 grid gap-5 md:grid-cols-2">
-            {/* Card 1 — full width */}
-            <BentoReveal variant="scale" className="md:col-span-2">
-              <div
-                className="group koia-card-grad rounded-xl border border-[#1E2A40] bg-[#0E1525] p-8 md:p-12 "
-                style={{ transitionTimingFunction: easing }}
-              >
-                <h3 className="text-xl font-medium text-[#EEF0F8]">
-                  L'IA, mais bien promptée.
-                </h3>
-                <p className="mt-4 max-w-[540px] font-light text-base leading-relaxed text-[#8A96B0]">
-                  KOIA, c'est un agent IA construit avec un system prompt de coaching expert — onboarding structuré, gestion des blessures, adaptation morphologique et hormonale, protocole RPE. Tu parles normalement, l'IA fait le travail de fond.
-                </p>
-
-                <div className="mt-10 grid gap-8 md:grid-cols-[1fr_1px_1fr]">
-                  {/* ChatGPT */}
-                  <div>
-                    <div className="mb-4 text-xs font-normal text-[#6B7A99]">ChatGPT</div>
-                    <div
-                      className="rounded-lg px-3.5 py-2.5 text-sm font-light text-[#8A96B0] max-w-[90%]"
-                      style={{ background: "rgba(238,240,248,0.03)" }}
-                    >
-                      Fais-moi un programme de muscu
-                    </div>
-                    <div
-                      className="mt-2 ml-auto rounded-lg px-3.5 py-2.5 text-sm font-light text-[#8A96B0]"
-                      style={{ background: "rgba(238,240,248,0.03)" }}
-                    >
-                      Jour 1 — Bench press 4×10, Shoulder press 3×12, Triceps pushdown 3×15...
-                    </div>
-                    <div className="mt-3 text-xs text-[#6B7A99]">Générique · Pas de contexte</div>
-                  </div>
-                  {/* Separator */}
-                  <div className="hidden md:block h-full w-px bg-[#1E2A40]" />
-                  {/* KOIA */}
-                  <div>
-                    <div className="mb-4 text-xs font-normal text-[#C2001E]">KOIA</div>
-                    <div
-                      className="rounded-lg px-3.5 py-2.5 text-sm font-light text-[#EEF0F8] max-w-[90%]"
-                      style={{ background: "rgba(194,0,30,0.04)" }}
-                    >
-                      J'ai mal au genou droit depuis hier
-                    </div>
-                    <div
-                      className="mt-2 ml-auto rounded-lg px-3.5 py-2.5 text-sm font-light text-[#EEF0F8]"
-                      style={{ background: "rgba(194,0,30,0.04)" }}
-                    >
-                      On remplace le squat bulgare par du hip thrust. Pas de flexion profonde cette semaine. RPE 6. Si ça persiste 48h → consulte.
-                    </div>
-                    <div className="mt-3 text-xs text-[#8A96B0]">Contextualisé · Adapté · Sourcé</div>
-                  </div>
-                </div>
-              </div>
-            </BentoReveal>
-
-            {/* Card 2 */}
-            <BentoReveal variant="up" delay={150}>
-              <div
-                className="h-full koia-card-grad rounded-xl border border-[#1E2A40] bg-[#0E1525] p-9 "
-                style={{ transitionTimingFunction: easing }}
-              >
-                <h3 className="text-lg font-medium text-[#EEF0F8]">Raisonnement transparent</h3>
-                <p className="mt-4 font-light text-sm leading-relaxed text-[#8A96B0]">
-                  Chaque exercice choisi pour une raison. KOIA t'explique pourquoi, avec le
-                  niveau de preuve. Si la science n'est pas claire, il te le dit.
-                </p>
-                <span
-                  className="mt-6 inline-block rounded-full px-3 py-1 text-xs font-normal text-[#8A96B0]"
-                  style={{
-                    background: "rgba(194,0,30,0.04)",
-                    border: "1px solid rgba(194,0,30,0.12)",
-                  }}
-                >
-                  [Preuve : méta-analyse 2018, Schoenfeld et al.]
-                </span>
-              </div>
-            </BentoReveal>
-
-            {/* Card 3 */}
-            <BentoReveal variant="up" delay={300}>
-              <div
-                className="h-full koia-card-grad rounded-xl border border-[#1E2A40] bg-[#0E1525] p-9 "
-                style={{ transitionTimingFunction: easing }}
-              >
-                <h3 className="text-lg font-medium text-[#EEF0F8]">Suivi repas sans prise de tête</h3>
-                <p className="mt-4 font-light text-sm leading-relaxed text-[#8A96B0]">
-                  Décris ce que tu manges, KOIA analyse. Pas de comptage obsessionnel — un suivi basé sur les portions et tes objectifs protéiques.
-                </p>
-                <div className="mt-6 space-y-1.5">
-                  <p className="font-light text-xs text-[#8A96B0]">🍗 Poulet grillé 150g → ~45g protéines</p>
-                  <p className="font-light text-xs text-[#8A96B0]">🥗 Salade composée → ~18g protéines</p>
-                  <p className="text-xs font-normal text-[#EEF0F8]">📊 Total : 63g / 110g cible</p>
-                </div>
-              </div>
-            </BentoReveal>
+          <div className="mt-16 flex flex-col gap-[60px]">
+            <DifferenceBlock1 />
+            <DifferenceBlock2 />
+            <DifferenceBlock3 />
           </div>
         </div>
       </section>
