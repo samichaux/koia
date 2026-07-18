@@ -308,18 +308,23 @@ function IPhoneMockup() {
               height: 26,
               borderRadius: "50%",
               background: "#0E1525",
-              color: "transparent",
               fontFamily: "Inter, sans-serif",
               fontWeight: 500,
               fontSize: 12,
-              backgroundImage:
-                "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              WebkitTextFillColor: "transparent",
             }}
           >
-            K
+            <span
+              style={{
+                backgroundImage:
+                  "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                color: "transparent",
+              }}
+            >
+              K
+            </span>
           </div>
           <div className="flex flex-col leading-tight">
             <span
