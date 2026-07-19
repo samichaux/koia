@@ -1199,7 +1199,7 @@ function DifferenceBlock3() {
               Suivi repas sans prise de tête
             </h3>
             <p className="mt-3 font-light text-sm leading-relaxed text-[#8A96B0]">
-              Décris ce que tu manges. KOIA analyse. Pas de comptage obsessionnel.
+              Décris ce que tu manges. KOIA analyse et te donne des conseils concrets — pas des chiffres, pas de culpabilité.
             </p>
           </div>
           <div
@@ -1213,24 +1213,37 @@ function DifferenceBlock3() {
               className="rounded-lg"
               style={{ background: "#141D30", padding: 14 }}
             >
-              <div className="text-xs font-normal text-[#EEF0F8]">Déjeuner — Mardi</div>
+              <div className="text-xs font-normal text-[#4A5872]">Suivi repas — Mardi midi</div>
               <div className="my-2 h-px" style={{ background: "#1E2A40" }} />
-              {[
-                ["Poulet grillé 150g", "45g prot"],
-                ["Riz basmati", "4g prot"],
-                ["Salade verte", "2g prot"],
-              ].map(([l, r]) => (
-                <div key={l} className="flex justify-between text-xs" style={{ padding: "2px 0" }}>
-                  <span className="font-light text-[#8A96B0]">{l}</span>
-                  <span className="text-[#EEF0F8]" style={{ fontWeight: 300 }}>{r}</span>
-                </div>
-              ))}
-              <div className="my-2 h-px" style={{ background: "#1E2A40" }} />
-              <div className="flex justify-between text-xs" style={{ fontWeight: 500 }}>
-                <span className="text-[#8A96B0]">Total repas</span>
-                <span>
+              <div
+                className="mb-2 inline-block rounded-lg"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
+                  padding: "6px 10px",
+                }}
+              >
+                <span
+                  className="text-[10px] font-light text-[#EEF0F8]"
+                  style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.4 }}
+                >
+                  j’ai mangé du poulet avec du riz et une salade
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <div
+                  className="flex shrink-0 items-center justify-center rounded-full"
+                  style={{
+                    width: 14,
+                    height: 14,
+                    background: "#0E1525",
+                    border: "1px solid rgba(194,0,30,0.2)",
+                  }}
+                >
                   <span
+                    className="text-[6px] font-medium"
                     style={{
+                      fontFamily: "Inter, sans-serif",
                       backgroundImage:
                         "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
                       WebkitBackgroundClip: "text",
@@ -1239,24 +1252,27 @@ function DifferenceBlock3() {
                       color: "transparent",
                     }}
                   >
-                    51g
+                    K
                   </span>
-                  <span className="text-[#8A96B0] font-light"> / 110g</span>
-                </span>
+                </div>
+                <p
+                  className="text-[10px] font-light leading-relaxed text-[#4A5872]"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  Bon repas 👍 Le poulet couvre bien tes protéines. Par contre la portion de riz est un peu grosse par rapport à la salade — essaie deux poings de légumes la prochaine fois.
+                </p>
               </div>
               <div
-                className="mt-2 rounded-full"
-                style={{ background: "#1E2A40", height: 3 }}
+                className="mt-3 text-[10px] font-light leading-relaxed text-[#4A5872]"
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  paddingLeft: 10,
+                  borderLeft: "2px solid transparent",
+                  borderImage:
+                    "linear-gradient(180deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%) 1",
+                }}
               >
-                <div
-                  className="rounded-full"
-                  style={{
-                    width: "46%",
-                    height: 3,
-                    background:
-                      "linear-gradient(90deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
-                  }}
-                />
+                Astuce : ajoute une source de bon gras — quelques noix ou un filet d’huile d’olive.
               </div>
             </div>
           </div>
