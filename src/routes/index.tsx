@@ -87,7 +87,7 @@ function WordReveal({
         ...bebas,
         lineHeight: 0.95,
         letterSpacing: "0.02em",
-        color: color ?? "#EEF0F8",
+        color: color ?? "var(--text-primary)",
       }}
     >
       {words.map((w, i) => (
@@ -277,7 +277,7 @@ function ProgrammeSection({ content }: { content: Content }) {
         <div className="mt-16 flex justify-center">
           <div
             ref={ref}
-            className="w-full max-w-[480px] overflow-hidden rounded-xl border border-[#1E2A40] bg-[#0E1525]"
+            className="w-full max-w-[480px] overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)]"
             style={{
               opacity: visible ? 1 : 0,
               transform: visible
@@ -289,9 +289,9 @@ function ProgrammeSection({ content }: { content: Content }) {
           >
             <div
               className="flex items-center justify-between"
-              style={{ background: "#141D30", padding: "16px 20px" }}
+              style={{ background: "var(--surface-2)", padding: "16px 20px" }}
             >
-              <span style={{ ...bebas, fontSize: "1.125rem", color: "#EEF0F8" }}>
+              <span style={{ ...bebas, fontSize: "1.125rem", color: "var(--text-primary)" }}>
                 {content.programme.cardLabel}
               </span>
               <span
@@ -323,7 +323,7 @@ function ProgrammeSection({ content }: { content: Content }) {
                       fontFamily: "Inter, sans-serif",
                       fontWeight: 400,
                       fontSize: "0.875rem",
-                      color: "#EEF0F8",
+                      color: "var(--text-primary)",
                     }}
                   >
                     {row.name}
@@ -374,7 +374,7 @@ function ProgrammeSection({ content }: { content: Content }) {
               className="flex items-start"
               style={{
                 padding: "16px 20px",
-                borderTop: "1px solid #1E2A40",
+                borderTop: "1px solid var(--border)",
                 opacity: visible ? 1 : 0,
                 transition: `opacity 500ms ${easing} ${400 + programme.length * 120 + 300}ms`,
               }}
@@ -385,7 +385,7 @@ function ProgrammeSection({ content }: { content: Content }) {
                   width: 16,
                   height: 16,
                   borderRadius: "50%",
-                  background: "#0E1525",
+                  background: "var(--surface)",
                   border: "1px solid rgba(194,0,30,0.2)",
                   fontFamily: "Inter, sans-serif",
                   fontWeight: 500,
@@ -438,7 +438,7 @@ function HeroHeadline({ content }: { content: Content }) {
   }, []);
   return (
     <h1
-      className="uppercase text-[#EEF0F8]"
+      className="uppercase text-[var(--text-primary)]"
       style={{
         fontFamily: "'Bebas Neue', sans-serif",
         fontSize: "clamp(2.8rem, 6vw, 5.5rem)",
@@ -502,7 +502,7 @@ function AccentHeadline({
   size?: string;
 }) {
   return (
-    <h2 className={`uppercase text-[#EEF0F8] ${size}`} style={{ ...bebas, lineHeight: 0.95, letterSpacing: "0.02em" }}>
+    <h2 className={`uppercase text-[var(--text-primary)] ${size}`} style={{ ...bebas, lineHeight: 0.95, letterSpacing: "0.02em" }}>
       {before}
       {before ? " " : ""}
       <span>{accent}</span>
@@ -591,8 +591,8 @@ function IPhoneMockup({ content }: { content: Content }) {
         width: 280,
         height: 580,
         borderRadius: 44,
-        border: "3px solid #1E2A40",
-        background: "#070C17",
+        border: "3px solid var(--border)",
+        background: "var(--bg-app)",
         overflow: "hidden",
         boxShadow: "0 20px 60px rgba(4,7,15,0.6)",
       }}
@@ -603,7 +603,7 @@ function IPhoneMockup({ content }: { content: Content }) {
           className="flex items-center justify-between"
           style={{ height: 44, padding: "12px 20px" }}
         >
-          <span className="text-xs font-medium text-[#EEF0F8]" style={{ fontFamily: "Inter, sans-serif" }}>
+          <span className="text-xs font-medium text-[var(--text-primary)]" style={{ fontFamily: "Inter, sans-serif" }}>
             {content.iPhone.statusBarTime}
           </span>
           <div className="flex items-center gap-1">
@@ -616,7 +616,7 @@ function IPhoneMockup({ content }: { content: Content }) {
         {/* Chat header */}
         <div
           className="flex items-center gap-2"
-          style={{ height: 40, padding: "6px 14px", borderBottom: "1px solid #1E2A40" }}
+          style={{ height: 40, padding: "6px 14px", borderBottom: "1px solid var(--border)" }}
         >
           <div
             className="flex items-center justify-center"
@@ -624,7 +624,7 @@ function IPhoneMockup({ content }: { content: Content }) {
               width: 26,
               height: 26,
               borderRadius: "50%",
-              background: "#0E1525",
+              background: "var(--surface)",
               fontFamily: "Inter, sans-serif",
               fontWeight: 500,
               fontSize: 12,
@@ -645,7 +645,7 @@ function IPhoneMockup({ content }: { content: Content }) {
           </div>
           <div className="flex flex-col leading-tight">
             <span
-              className="font-medium text-[#EEF0F8]"
+              className="font-medium text-[var(--text-primary)]"
               style={{ fontFamily: "Inter, sans-serif", fontSize: 11 }}
             >
               {content.iPhone.chatHeaderName}
@@ -704,12 +704,12 @@ function IPhoneMockup({ content }: { content: Content }) {
                         height: 20,
                         borderRadius: "50%",
                         flexShrink: 0,
-                        background: isUser ? "rgba(194, 0, 30, 0.15)" : "#0E1525",
-                        border: isUser ? "1px solid rgba(194, 0, 30, 0.2)" : "1px solid #1E2A40",
+                        background: isUser ? "rgba(194, 0, 30, 0.15)" : "var(--surface)",
+                        border: isUser ? "1px solid rgba(194, 0, 30, 0.2)" : "1px solid var(--border)",
                         fontFamily: "Inter, sans-serif",
                         fontWeight: 500,
                         fontSize: 9,
-                        color: isUser ? "#EEF0F8" : "transparent",
+                        color: isUser ? "var(--text-primary)" : "transparent",
                       }}
                     >
                       {isUser ? (
@@ -733,7 +733,7 @@ function IPhoneMockup({ content }: { content: Content }) {
                   <div
                     style={{
                       background: isUser ? "#7A0012" : "#141E30",
-                      color: "#EEF0F8",
+                      color: "var(--text-primary)",
                       borderRadius: isUser ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
                       padding: "8px 12px",
                       maxWidth: "100%",
@@ -786,12 +786,12 @@ function IPhoneMockup({ content }: { content: Content }) {
         {/* Input bar */}
         <div
           className="flex items-center gap-2"
-          style={{ padding: "8px 12px", borderTop: "1px solid #1E2A40" }}
+          style={{ padding: "8px 12px", borderTop: "1px solid var(--border)" }}
         >
           <div
             className="flex flex-1 items-center"
             style={{
-              background: "#0E1525",
+              background: "var(--surface)",
               borderRadius: 20,
               height: 32,
               padding: "0 12px",
@@ -813,7 +813,7 @@ function IPhoneMockup({ content }: { content: Content }) {
               borderRadius: "50%",
               background:
                 "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
-              color: "#EEF0F8",
+              color: "var(--text-primary)",
             }}
           >
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -842,7 +842,7 @@ function MiniChatBubble({
       ? "rgba(255,255,255,0.04)"
       : variant === "koia-user"
         ? "linear-gradient(135deg, rgba(255,45,75,0.22) 0%, rgba(194,0,30,0.16) 40%, rgba(122,0,18,0.12) 100%)"
-        : "#0E1525";
+        : "var(--surface)";
   return (
     <div
       className={`flex ${isUser ? "justify-end" : "justify-start"}`}
@@ -851,7 +851,7 @@ function MiniChatBubble({
       <div
         style={{
           background: bg,
-          color: "#EEF0F8",
+          color: "var(--text-primary)",
           borderRadius: isUser ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
           padding: "6px 10px",
           maxWidth: "88%",
@@ -889,10 +889,10 @@ function PhoneFrame({
         className="relative"
         style={{
           width: "100%",
-          background: "#0E1525",
+          background: "var(--surface)",
           borderRadius: 14,
           padding: 16,
-          border: variant === "on" ? "1px solid transparent" : "1px solid #1E2A40",
+          border: variant === "on" ? "1px solid transparent" : "1px solid var(--border)",
           borderImage:
             variant === "on"
               ? "linear-gradient(135deg, rgba(255,45,75,0.35), rgba(194,0,30,0.2), rgba(122,0,18,0.1)) 1"
@@ -936,7 +936,7 @@ function PhoneFrame({
         )}
         <div className="relative">{children}</div>
       </div>
-      <div className="mt-2 text-xs" style={{ color: variant === "on" ? "#EEF0F8" : "#6B7A99" }}>
+      <div className="mt-2 text-xs" style={{ color: variant === "on" ? "var(--text-primary)" : "#6B7A99" }}>
         {footer}
       </div>
     </div>
@@ -1016,7 +1016,7 @@ function DifferenceBlock1({ content }: { content: Content }) {
         }}
       >
         <h3
-          className="uppercase text-[#EEF0F8]"
+          className="uppercase text-[var(--text-primary)]"
           style={{ ...bebas, fontSize: "1.75rem", lineHeight: 1.05, letterSpacing: "0.02em" }}
         >
           {block.title}
@@ -1032,7 +1032,7 @@ function DifferenceBlock1({ content }: { content: Content }) {
               "linear-gradient(180deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%) 1",
           }}
         >
-          <p className="text-xs font-normal text-[#EEF0F8]">
+          <p className="text-xs font-normal text-[var(--text-primary)]">
             {block.systemPrompt}
           </p>
         </div>
@@ -1073,7 +1073,7 @@ function DifferenceBlock2({ content }: { content: Content }) {
       />
       <div className="relative z-10 max-w-[520px] p-10">
         <h3
-          className="uppercase text-[#EEF0F8]"
+          className="uppercase text-[var(--text-primary)]"
           style={{ ...bebas, fontSize: "1.5rem", lineHeight: 1.05, letterSpacing: "0.02em" }}
         >
           {block.title}
@@ -1085,7 +1085,7 @@ function DifferenceBlock2({ content }: { content: Content }) {
           {block.pills.map((p) => (
             <span
               key={p.t}
-              className="inline-block rounded-full text-xs text-[#EEF0F8]"
+              className="inline-block rounded-full text-xs text-[var(--text-primary)]"
               style={{
                 background: "rgba(194,0,30,0.1)",
                 border: "1px solid rgba(194,0,30,0.2)",
@@ -1108,7 +1108,7 @@ function DifferenceBlock3({ content }: { content: Content }) {
   return (
     <div ref={ref} className="mx-auto w-full max-w-[560px]">
       <div
-        className="rounded-xl border border-[#1E2A40] bg-[#0E1525] p-8"
+        className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-8"
         style={{ transitionTimingFunction: easing }}
       >
         <div className="grid gap-6 md:grid-cols-2 md:items-center">
@@ -1120,7 +1120,7 @@ function DifferenceBlock3({ content }: { content: Content }) {
             }}
           >
             <h3
-              className="uppercase text-[#EEF0F8]"
+              className="uppercase text-[var(--text-primary)]"
               style={{ ...bebas, fontSize: "1.25rem", lineHeight: 1.05, letterSpacing: "0.02em" }}
             >
               {block.title}
@@ -1138,10 +1138,10 @@ function DifferenceBlock3({ content }: { content: Content }) {
           >
             <div
               className="rounded-lg"
-              style={{ background: "#141D30", padding: 14 }}
+              style={{ background: "var(--surface-2)", padding: 14 }}
             >
-              <div className="text-xs font-normal text-[#4A5872]">{block.mealLabel}</div>
-              <div className="my-2 h-px" style={{ background: "#1E2A40" }} />
+              <div className="text-xs font-normal text-[var(--text-secondary)]">{block.mealLabel}</div>
+              <div className="my-2 h-px" style={{ background: "var(--border)" }} />
               <div
                 className="mb-2 inline-block rounded-lg"
                 style={{
@@ -1151,7 +1151,7 @@ function DifferenceBlock3({ content }: { content: Content }) {
                 }}
               >
                 <span
-                  className="text-[10px] font-light text-[#EEF0F8]"
+                  className="text-[10px] font-light text-[var(--text-primary)]"
                   style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.4 }}
                 >
                   {block.userMessage}
@@ -1163,7 +1163,7 @@ function DifferenceBlock3({ content }: { content: Content }) {
                   style={{
                     width: 14,
                     height: 14,
-                    background: "#0E1525",
+                    background: "var(--surface)",
                     border: "1px solid rgba(194,0,30,0.2)",
                   }}
                 >
@@ -1183,14 +1183,14 @@ function DifferenceBlock3({ content }: { content: Content }) {
                   </span>
                 </div>
                 <p
-                  className="text-[10px] font-light leading-relaxed text-[#4A5872]"
+                  className="text-[10px] font-light leading-relaxed text-[var(--text-secondary)]"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
                   {block.aiResponse}
                 </p>
               </div>
               <div
-                className="mt-3 text-[10px] font-light leading-relaxed text-[#4A5872]"
+                className="mt-3 text-[10px] font-light leading-relaxed text-[var(--text-secondary)]"
                 style={{
                   fontFamily: "Inter, sans-serif",
                   paddingLeft: 10,
@@ -1235,7 +1235,7 @@ export function LandingPage({ content }: { content: Content }) {
   }, [content]);
 
   return (
-    <main className="relative bg-[#04070F] text-[#EEF0F8] overflow-x-hidden">
+    <main className="relative bg-[var(--bg-page)] text-[var(--text-primary)] overflow-x-hidden">
       {/* HERO */}
       <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
         <img
@@ -1310,14 +1310,14 @@ export function LandingPage({ content }: { content: Content }) {
             <Eyebrow>{content.problem.eyebrow}</Eyebrow>
           </RevealOnScroll>
           <WordReveal text={content.problem.title} />
-          <div className="mt-16 border-t border-[#1E2A40]">
+          <div className="mt-16 border-t border-[var(--border)]">
             {content.problem.items.map((p, i) => (
               <div
                 key={p.n}
                 ref={(el) => {
                   problemsRefs.current[i] = el;
                 }}
-                className="grid grid-cols-[auto_1fr] gap-6 md:gap-10 border-b border-[#1E2A40] py-10"
+                className="grid grid-cols-[auto_1fr] gap-6 md:gap-10 border-b border-[var(--border)] py-10"
                 style={{
                   transition: `opacity 600ms ${easing}, transform 600ms ${easing}`,
                   opacity: visibleProblems.has(i) ? 1 : 0,
@@ -1340,7 +1340,7 @@ export function LandingPage({ content }: { content: Content }) {
                   {p.n}
                 </div>
                 <div>
-                  <h3 className="text-lg font-medium text-[#EEF0F8]">{p.title}</h3>
+                  <h3 className="text-lg font-medium text-[var(--text-primary)]">{p.title}</h3>
                   <p className="mt-2 font-light text-base leading-relaxed text-[#8A96B0] max-w-[720px]">
                     {p.text}
                   </p>
@@ -1430,7 +1430,7 @@ export function LandingPage({ content }: { content: Content }) {
         <div className="relative z-10 mx-auto max-w-[900px] px-6 py-32 text-center">
           <ScaleReveal>
             <h2
-              className="uppercase text-[#EEF0F8]"
+              className="uppercase text-[var(--text-primary)]"
               style={{
                 ...bebas,
                 fontSize: "clamp(2rem, 5vw, 4rem)",
