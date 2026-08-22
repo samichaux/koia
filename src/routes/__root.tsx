@@ -134,8 +134,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const lang = pathname.startsWith("/en") ? "en" : "fr";
+
   return (
-    <html lang="fr">
+    <html lang={lang}>
       <head>
         <HeadContent />
       </head>
