@@ -27,6 +27,11 @@ function buildFaqJsonLd() {
 export const Route = createFileRoute("/")({
   component: () => <LandingPage content={frContent} />,
   head: () => ({
+    links: [
+      { rel: "alternate", hrefLang: "fr", href: "https://koia.be/" },
+      { rel: "alternate", hrefLang: "en", href: "https://koia.be/en" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://koia.be/" },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -1204,7 +1209,7 @@ function DifferenceBlock3({ content }: { content: Content }) {
   );
 }
 
-function LandingPage({ content }: { content: Content }) {
+export function LandingPage({ content }: { content: Content }) {
   const problemsRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [visibleProblems, setVisibleProblems] = useState<Set<number>>(new Set());
   useEffect(() => {
