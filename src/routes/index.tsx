@@ -1204,7 +1204,7 @@ function DifferenceBlock3({ content }: { content: Content }) {
   );
 }
 
-function LandingPage({ content }: { content: Content }) {
+export function LandingPage({ content }: { content: Content }) {
   const problemsRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [visibleProblems, setVisibleProblems] = useState<Set<number>>(new Set());
   useEffect(() => {
