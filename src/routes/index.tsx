@@ -27,6 +27,11 @@ function buildFaqJsonLd() {
 export const Route = createFileRoute("/")({
   component: () => <LandingPage content={frContent} />,
   head: () => ({
+    links: [
+      { rel: "alternate", hrefLang: "fr", href: "https://koia.be/" },
+      { rel: "alternate", hrefLang: "en", href: "https://koia.be/en" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://koia.be/" },
+    ],
     scripts: [
       {
         type: "application/ld+json",
