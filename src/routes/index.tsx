@@ -3,38 +3,11 @@ import { EmailWaitlistForm } from "@/components/koia/EmailWaitlistForm";
 import { FaqAccordion } from "@/components/koia/FaqAccordion";
 import { RevealOnScroll } from "@/components/koia/RevealOnScroll";
 import { useEffect, useRef, useState } from "react";
+import { frContent } from "@/content/fr";
+import type { Content } from "@/content/fr";
 
 // Source unique des questions/réponses : utilisée par l'accordéon et le JSON-LD FAQPage.
-const faqs = [
-  {
-    q: "KOIA est-elle une app de musculation ou de fitness ?",
-    a: "Les deux. KOIA génère des programmes adaptés à tes objectifs — prise de muscle, perte de gras, condition physique. Le coach IA s'adapte à ton niveau et ton équipement.",
-  },
-  {
-    q: "Pourquoi ne pas utiliser ChatGPT pour mon programme ?",
-    a: "Tu peux, et le premier programme peut même être bon. Le problème arrive à la semaine 3 : ChatGPT ne se souvient pas de ta séance précédente, ni de si tu as eu mal quelque part. Tu dois tout retaper à chaque fois. KOIA garde le fil et ajuste sans que tu aies à réexpliquer.",
-  },
-  {
-    q: "En quoi l'IA de KOIA est différente des autres apps ?",
-    a: "La plupart des apps utilisent un quiz pour générer un programme statique. KOIA utilise un agent conversationnel qui comprend ton contexte, s'adapte semaine après semaine, et t'explique chaque choix.",
-  },
-  {
-    q: "KOIA propose-t-elle un suivi nutritionnel ?",
-    a: "Oui. Tu décris tes repas, KOIA les analyse avec des données vérifiées. Pas de comptage obsessionnel — un suivi basé sur les portions et tes objectifs protéiques.",
-  },
-  {
-    q: "KOIA est-elle adaptée aux femmes ?",
-    a: "KOIA est conçue pour tout le monde. Le coach prend en compte les spécificités morphologiques et hormonales de chaque profil, y compris l'adaptation au cycle menstruel.",
-  },
-  {
-    q: "Combien coûtera KOIA ?",
-    a: "Le pricing sera annoncé au lancement. Les membres de la bêta privée bénéficieront de conditions préférentielles.",
-  },
-  {
-    q: "Quand KOIA sera-t-elle disponible ?",
-    a: "KOIA est en développement. Rejoins la bêta pour tester en avant-première et influencer le produit.",
-  },
-];
+const faqs: { q: string; a: string }[] = [...frContent.faq.items];
 
 function buildFaqJsonLd() {
   return {
@@ -52,7 +25,7 @@ function buildFaqJsonLd() {
 }
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  component: () => <LandingPage content={frContent} />,
   head: () => ({
     scripts: [
       {
@@ -149,10 +122,10 @@ function WordReveal({
   );
 }
 
-function MotivationalDivider() {
+function MotivationalDivider({ content }: { content: Content }) {
   const { ref, visible } = useInView<HTMLDivElement>(0.3);
-  const line1 = "ARRÊTE DE DEVINER.".split(" ");
-  const line2 = "COMMENCE À COMPRENDRE.".split(" ");
+  const line1 = content.motivational.line1.split(" ");
+  const line2 = content.motivational.line2.split(" ");
   const line1Duration = line1.length * 100;
   const beatPause = 400;
   return (
@@ -286,23 +259,16 @@ function ScaleReveal({
   );
 }
 
-const programme = [
-  { name: "Hip Thrust", sets: "4×10", rpe: "RPE 8" },
-  { name: "Rowing T-bar", sets: "4×10", rpe: "RPE 7" },
-  { name: "Squat Bulgare", sets: "3×12", rpe: "RPE 7" },
-  { name: "Reverse Pec Deck", sets: "3×15", rpe: "RPE 6" },
-  { name: "Abduction machine", sets: "3×15", rpe: "RPE 6" },
-];
-
-function ProgrammeSection() {
+function ProgrammeSection({ content }: { content: Content }) {
   const { ref, visible } = useInView<HTMLDivElement>(0.2);
+  const programme = content.programme.rows;
   return (
     <section>
       <div className="mx-auto max-w-[1200px] px-6 py-24">
         <RevealOnScroll>
-          <Eyebrow>Exemple</Eyebrow>
+          <Eyebrow>{content.programme.eyebrow}</Eyebrow>
         </RevealOnScroll>
-        <WordReveal text="Ton programme, pas celui de tout le monde" />
+        <WordReveal text={content.programme.title} />
         <div className="mt-16 flex justify-center">
           <div
             ref={ref}
@@ -321,7 +287,7 @@ function ProgrammeSection() {
               style={{ background: "#141D30", padding: "16px 20px" }}
             >
               <span style={{ ...bebas, fontSize: "1.125rem", color: "#EEF0F8" }}>
-                FULL BODY A
+                {content.programme.cardLabel}
               </span>
               <span
                 style={{
@@ -331,7 +297,7 @@ function ProgrammeSection() {
                   color: "#8A96B0",
                 }}
               >
-                Semaine 3 · Recomp
+                {content.programme.cardSubLabel}
               </span>
             </div>
             <div>
@@ -444,7 +410,7 @@ function ProgrammeSection() {
                   color: "#8A96B0",
                 }}
               >
-                Hip thrust en premier — on cible les fessiers quand tu es encore fraîche. Le rowing est chest-supported pour protéger le bas du dos.
+                {content.programme.coachNote}
               </p>
             </div>
           </div>
@@ -454,45 +420,8 @@ function ProgrammeSection() {
   );
 }
 
-const problems = [
-  {
-    n: "01",
-    title: "ChatGPT te donne un programme. Pas un coach.",
-    text: "Des millions de gens demandent déjà à ChatGPT ou Claude de leur écrire un programme. Mais sans le bon prompt, l'IA invente, généralise, et oublie ta morphologie, tes blessures, ton historique. Tu obtiens un plan générique habillé en personnalisation.",
-  },
-  {
-    n: "02",
-    title: "Les apps fitness ne sont pas de l'IA.",
-    text: "Un quiz de 5 questions et un PDF. La plupart des apps qui se disent « IA » sont des formulaires avec un logo. Aucune adaptation réelle, aucune explication, aucune conversation.",
-  },
-  {
-    n: "03",
-    title: "Personne ne te dit pourquoi.",
-    text: "Pourquoi cet exercice et pas un autre ? Pourquoi 4 séries et pas 3 ? Ni ChatGPT ni les apps ne t'expliquent le raisonnement — chez KOIA, chaque choix a une réponse que tu peux lire quand tu veux la lire.",
-  },
-];
-
-const credibility = [
-  "Zéro diet culture · Rien à te vendre",
-  "Conçu par une athlète · 10 ans de pratique",
-  "Basé sur Schoenfeld, Morton, Helms, Contreras",
-  "Protocole RPE validé par la recherche",
-];
-
-
-
-function HeroHeadline() {
-  const words = [
-    { t: "LE", f: "bebas" },
-    { t: "COACH", f: "bebas" },
-    { t: "IA", f: "bebas" },
-    { t: "QUI", f: "bebas" },
-    { t: "S'ADAPTE", f: "bebas" },
-    { t: "\n", f: "br" },
-    { t: "VRAIMENT", f: "gradient" },
-    { t: "À", f: "bebas" },
-    { t: "TOI", f: "bebas" },
-  ];
+function HeroHeadline({ content }: { content: Content }) {
+  const words = content.hero.headline;
   const [shown, setShown] = useState(0);
   useEffect(() => {
     const timers: number[] = [];
@@ -577,39 +506,8 @@ function AccentHeadline({
   );
 }
 
-function IPhoneMockup() {
-  const messages = [
-    {
-      from: "koia",
-      text: "Salut ! Je suis ton coach. Pour construire ton programme, j'ai quelques questions. C'est quoi ton objectif principal ?",
-      delay: 500,
-    },
-    {
-      from: "user",
-      text: "recomp, je veux perdre du gras et raffermir surtout les fessiers",
-      delay: 2000,
-    },
-    {
-      from: "koia",
-      text: "Noté. Tu t'entraînes depuis combien de temps ? Et tu as des blessures ou douleurs actuelles ?",
-      delay: 3500,
-    },
-    {
-      from: "user",
-      text: "10 ans, j'ai une douleur au genou droit en ce moment",
-      delay: 5000,
-    },
-    {
-      from: "koia",
-      text: "Avec ton expérience je pars sur un Full Body 3×/sem. Pour le genou : pas de squat profond, on privilégie hip thrust et leg press partiel.",
-      delay: 6500,
-    },
-    {
-      from: "koia",
-      text: "J'ai aussi détecté que tu as un dos dominant — je retire les tractions pour équilibrer tes proportions. Voici ton programme ↓",
-      delay: 7500,
-    },
-  ] as const;
+function IPhoneMockup({ content }: { content: Content }) {
+  const messages = content.iPhone.messages;
 
   const TYPING_MS = 600;
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -701,7 +599,7 @@ function IPhoneMockup() {
           style={{ height: 44, padding: "12px 20px" }}
         >
           <span className="text-xs font-medium text-[#EEF0F8]" style={{ fontFamily: "Inter, sans-serif" }}>
-            9:41
+            {content.iPhone.statusBarTime}
           </span>
           <div className="flex items-center gap-1">
             <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#8A96B0" }} />
@@ -745,7 +643,7 @@ function IPhoneMockup() {
               className="font-medium text-[#EEF0F8]"
               style={{ fontFamily: "Inter, sans-serif", fontSize: 11 }}
             >
-              KOIA
+              {content.iPhone.chatHeaderName}
             </span>
             <span
               className="flex items-center gap-1 text-[#8A96B0]"
@@ -755,7 +653,7 @@ function IPhoneMockup() {
                 className="inline-block rounded-full"
                 style={{ width: 5, height: 5, background: "#C2001E" }}
               />
-              En ligne
+              {content.iPhone.onlineStatus}
             </span>
           </div>
         </div>
@@ -898,7 +796,7 @@ function IPhoneMockup() {
               color: "#6B7A99",
             }}
           >
-            Écris à ton coach...
+            {content.iPhone.inputPlaceholder}
           </div>
           <button
             type="button"
@@ -1040,8 +938,9 @@ function PhoneFrame({
   );
 }
 
-function DifferenceBlock1() {
+function DifferenceBlock1({ content }: { content: Content }) {
   const { ref, visible } = useInView<HTMLDivElement>(0.2);
+  const block = content.difference.block1;
   return (
     <div
       ref={ref}
@@ -1056,16 +955,16 @@ function DifferenceBlock1() {
           }}
         >
           <PhoneFrame
-            label="Sans KOIA"
+            label={block.without.label}
             variant="off"
             mark="cross"
-            footer="Générique · Pas de contexte"
+            footer={block.without.footer}
           >
-            <MiniChatBubble side="user" variant="chatgpt">
-              Fais-moi un programme de muscu
+            <MiniChatBubble side={block.without.messages[0].side as "user" | "ai"} variant="chatgpt">
+              {block.without.messages[0].text}
             </MiniChatBubble>
-            <MiniChatBubble side="ai" variant="chatgpt">
-              Jour 1 — Bench press 4×10, Shoulder press 3×12, Triceps pushdown 3×15...
+            <MiniChatBubble side={block.without.messages[1].side as "user" | "ai"} variant="chatgpt">
+              {block.without.messages[1].text}
             </MiniChatBubble>
           </PhoneFrame>
         </div>
@@ -1077,7 +976,7 @@ function DifferenceBlock1() {
           }}
         >
           <PhoneFrame
-            label="Avec KOIA"
+            label={block.with.label}
             variant="on"
             mark="check"
             footer={
@@ -1091,15 +990,15 @@ function DifferenceBlock1() {
                   color: "transparent",
                 }}
               >
-                Adapté · Contextualisé · Sourcé
+                {block.with.footer}
               </span>
             }
           >
-            <MiniChatBubble side="user" variant="koia-user">
-              j'ai mal au genou droit
+            <MiniChatBubble side={block.with.messages[0].side as "user" | "ai"} variant="koia-user">
+              {block.with.messages[0].text}
             </MiniChatBubble>
-            <MiniChatBubble side="ai" variant="koia-ai">
-              Je remplace le squat bulgare par du hip thrust. RPE 6 aujourd'hui. Si ça persiste → consulte.
+            <MiniChatBubble side={block.with.messages[1].side as "user" | "ai"} variant="koia-ai">
+              {block.with.messages[1].text}
             </MiniChatBubble>
           </PhoneFrame>
         </div>
@@ -1115,10 +1014,10 @@ function DifferenceBlock1() {
           className="uppercase text-[#EEF0F8]"
           style={{ ...bebas, fontSize: "1.75rem", lineHeight: 1.05, letterSpacing: "0.02em" }}
         >
-          L'IA, mais bien promptée
+          {block.title}
         </h3>
         <p className="mt-4 font-light text-sm leading-relaxed text-[#8A96B0]">
-          KOIA ne repart pas de zéro à chaque message. Il retient tes séances, tes douleurs, ta progression — et ajuste, semaine après semaine, sans que tu aies à tout rappeler.
+          {block.body}
         </p>
         <div
           className="mt-6 pl-3"
@@ -1129,7 +1028,7 @@ function DifferenceBlock1() {
           }}
         >
           <p className="text-xs font-normal text-[#EEF0F8]">
-            System prompt : 6 blocs · 47 règles · 0 bullshit
+            {block.systemPrompt}
           </p>
         </div>
       </div>
@@ -1137,8 +1036,9 @@ function DifferenceBlock1() {
   );
 }
 
-function DifferenceBlock2() {
+function DifferenceBlock2({ content }: { content: Content }) {
   const { ref, visible } = useInView<HTMLDivElement>(0.2);
+  const block = content.difference.block2;
   return (
     <div
       ref={ref}
@@ -1171,17 +1071,13 @@ function DifferenceBlock2() {
           className="uppercase text-[#EEF0F8]"
           style={{ ...bebas, fontSize: "1.5rem", lineHeight: 1.05, letterSpacing: "0.02em" }}
         >
-          Raisonnement transparent
+          {block.title}
         </h3>
         <p className="mt-3 font-light text-sm leading-relaxed text-[#8A96B0] max-w-[400px]">
-          Chaque exercice est choisi pour une raison. KOIA t'explique pourquoi, avec le niveau de preuve.
+          {block.body}
         </p>
         <div className="mt-5 flex flex-wrap gap-2">
-          {[
-            { t: "Méta-analyse ✓", dim: false },
-            { t: "Étude RCT ✓", dim: false },
-            { t: "Consensus expert ✓", dim: true },
-          ].map((p) => (
+          {block.pills.map((p) => (
             <span
               key={p.t}
               className="inline-block rounded-full text-xs text-[#EEF0F8]"
@@ -1201,8 +1097,9 @@ function DifferenceBlock2() {
   );
 }
 
-function DifferenceBlock3() {
+function DifferenceBlock3({ content }: { content: Content }) {
   const { ref, visible } = useInView<HTMLDivElement>(0.2);
+  const block = content.difference.block3;
   return (
     <div ref={ref} className="mx-auto w-full max-w-[560px]">
       <div
@@ -1221,10 +1118,10 @@ function DifferenceBlock3() {
               className="uppercase text-[#EEF0F8]"
               style={{ ...bebas, fontSize: "1.25rem", lineHeight: 1.05, letterSpacing: "0.02em" }}
             >
-              Suivi repas sans prise de tête
+              {block.title}
             </h3>
             <p className="mt-3 font-light text-sm leading-relaxed text-[#8A96B0]">
-              Décris ce que tu manges. KOIA analyse et te donne des conseils concrets — pas des chiffres, pas de culpabilité.
+              {block.body}
             </p>
           </div>
           <div
@@ -1238,7 +1135,7 @@ function DifferenceBlock3() {
               className="rounded-lg"
               style={{ background: "#141D30", padding: 14 }}
             >
-              <div className="text-xs font-normal text-[#4A5872]">Suivi repas — Mardi midi</div>
+              <div className="text-xs font-normal text-[#4A5872]">{block.mealLabel}</div>
               <div className="my-2 h-px" style={{ background: "#1E2A40" }} />
               <div
                 className="mb-2 inline-block rounded-lg"
@@ -1252,7 +1149,7 @@ function DifferenceBlock3() {
                   className="text-[10px] font-light text-[#EEF0F8]"
                   style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.4 }}
                 >
-                  j’ai mangé du poulet avec du riz et une salade
+                  {block.userMessage}
                 </span>
               </div>
               <div className="flex items-start gap-2">
@@ -1284,7 +1181,7 @@ function DifferenceBlock3() {
                   className="text-[10px] font-light leading-relaxed text-[#4A5872]"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
-                  Bon repas 👍 Le poulet couvre bien tes protéines. Par contre la portion de riz est un peu grosse par rapport à la salade — essaie deux poings de légumes la prochaine fois.
+                  {block.aiResponse}
                 </p>
               </div>
               <div
@@ -1297,7 +1194,7 @@ function DifferenceBlock3() {
                     "linear-gradient(180deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%) 1",
                 }}
               >
-                Astuce : ajoute une source de bon gras — quelques noix ou un filet d’huile d’olive.
+                {block.tip}
               </div>
             </div>
           </div>
@@ -1307,12 +1204,13 @@ function DifferenceBlock3() {
   );
 }
 
-function Index() {
+function LandingPage({ content }: { content: Content }) {
   const problemsRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [visibleProblems, setVisibleProblems] = useState<Set<number>>(new Set());
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
-    problemsRefs.current.forEach((node, i) => {
+    content.problem.items.forEach((_, i) => {
+      const node = problemsRefs.current[i];
       if (!node) return;
       const io = new IntersectionObserver(
         (entries) => {
@@ -1329,7 +1227,7 @@ function Index() {
       observers.push(io);
     });
     return () => observers.forEach((o) => o.disconnect());
-  }, []);
+  }, [content]);
 
   return (
     <main className="relative bg-[#04070F] text-[#EEF0F8] overflow-x-hidden">
@@ -1366,20 +1264,20 @@ function Index() {
           <div className="grid gap-16 md:grid-cols-[55fr_45fr] md:items-center">
             {/* Left: text + form */}
             <div className="text-left max-md:text-center">
-              <HeroHeadline />
+              <HeroHeadline content={content} />
               <p className="mt-6 font-light text-lg text-[#8A96B0] animate-[fade-in_600ms_ease-out_1200ms_both]">
-                Tu parles comme à un vrai coach. KOIA construit ton plan et l'adapte chaque semaine.
+                {content.hero.subtitle}
               </p>
               <div className="mt-10 animate-[fade-in_600ms_ease-out_1400ms_both] max-md:flex max-md:justify-center">
                 <EmailWaitlistForm idPrefix="hero" />
               </div>
               <p className="mt-4 text-xs font-light text-[#6B7A99] animate-[fade-in_600ms_ease-out_1600ms_both]">
-                Gratuit · Pas de spam · Accès prioritaire
+                {content.hero.formNote}
               </p>
             </div>
             {/* Right: iPhone mockup */}
             <div className="relative animate-[fade-in_800ms_ease-out_1600ms_both] max-md:mt-4">
-              <IPhoneMockup />
+              <IPhoneMockup content={content} />
             </div>
           </div>
         </div>
@@ -1404,11 +1302,11 @@ function Index() {
       <section>
         <div className="mx-auto max-w-[1200px] px-6 py-24">
           <RevealOnScroll>
-            <Eyebrow>Le problème</Eyebrow>
+            <Eyebrow>{content.problem.eyebrow}</Eyebrow>
           </RevealOnScroll>
-          <WordReveal text="Ce que les apps fitness te vendent" />
+          <WordReveal text={content.problem.title} />
           <div className="mt-16 border-t border-[#1E2A40]">
-            {problems.map((p, i) => (
+            {content.problem.items.map((p, i) => (
               <div
                 key={p.n}
                 ref={(el) => {
@@ -1449,39 +1347,39 @@ function Index() {
       </section>
 
       <PulseLine />
-      <MotivationalDivider />
+      <MotivationalDivider content={content} />
 
       {/* DIFFERENCE — Bento */}
       <section>
         <div className="mx-auto max-w-[1200px] px-6 py-24">
           <RevealOnScroll>
-            <Eyebrow>La différence</Eyebrow>
+            <Eyebrow>{content.difference.eyebrow}</Eyebrow>
           </RevealOnScroll>
-          <WordReveal text="Un coach qui mérite le nom" />
+          <WordReveal text={content.difference.title} />
 
           <div className="mt-16 flex flex-col gap-[60px]">
-            <DifferenceBlock1 />
-            <DifferenceBlock2 />
-            <DifferenceBlock3 />
+            <DifferenceBlock1 content={content} />
+            <DifferenceBlock2 content={content} />
+            <DifferenceBlock3 content={content} />
           </div>
         </div>
       </section>
 
       <PulseLine />
-      <ProgrammeSection />
+      <ProgrammeSection content={content} />
 
       {/* CREDIBILITY */}
       <section className="koia-section-divider">
         <div className="mx-auto max-w-[1200px] px-6 py-20">
           <RevealOnScroll>
-            <Eyebrow>Les fondations</Eyebrow>
+            <Eyebrow>{content.credibility.eyebrow}</Eyebrow>
           </RevealOnScroll>
           <RevealOnScroll>
             <div className="flex gap-8 md:gap-10 overflow-x-auto md:overflow-visible md:justify-between items-center pb-2 -mx-6 px-6">
-              {credibility.map((c, i) => (
+              {content.credibility.items.map((c, i) => (
                 <div key={i} className="flex items-center gap-8 md:gap-10 shrink-0 md:shrink">
                   <p className="font-light text-sm text-[#B4BFD3] max-w-[260px]">{c}</p>
-                  {i < credibility.length - 1 ? (
+                  {i < content.credibility.items.length - 1 ? (
                     <div className="hidden md:block h-10 w-px shrink-0" style={{ background: "#2A3654" }} />
                   ) : null}
                 </div>
@@ -1495,9 +1393,9 @@ function Index() {
       <section className="koia-section-divider">
         <div className="mx-auto max-w-[1200px] px-6 py-24">
           <RevealOnScroll>
-            <Eyebrow>Questions</Eyebrow>
+            <Eyebrow>{content.faq.eyebrow}</Eyebrow>
           </RevealOnScroll>
-          <WordReveal text="Ce que tu veux savoir" />
+          <WordReveal text={content.faq.title} />
           <div className="mt-12 max-w-[860px]">
             <FaqAccordion items={faqs} />
           </div>
@@ -1535,11 +1433,11 @@ function Index() {
                 letterSpacing: "0.02em",
               }}
             >
-              Prêt·e à essayer un coach
+              {content.finalCta.title.line1}
               <br />
-              qui ne{" "}
-              <span>MENT</span>{" "}
-              pas ?
+              {content.finalCta.title.line2Before}{" "}
+              <span>{content.finalCta.title.accent}</span>{" "}
+              {content.finalCta.title.line2After}
             </h2>
           </ScaleReveal>
           <RevealOnScroll delay={100}>
@@ -1549,7 +1447,7 @@ function Index() {
           </RevealOnScroll>
           <RevealOnScroll delay={200}>
             <p className="mt-4 text-xs font-light text-[#6B7A99]">
-              Gratuit · Pas de spam · Accès prioritaire
+              {content.finalCta.formNote}
             </p>
           </RevealOnScroll>
         </div>
@@ -1558,7 +1456,7 @@ function Index() {
       {/* FOOTER */}
       <footer className="koia-section-divider">
         <div className="mx-auto max-w-[1200px] px-6 py-12 text-center text-xs font-light text-[#6B7A99]">
-          © 2026 KOIA
+          {content.footer.copyright}
         </div>
       </footer>
     </main>
