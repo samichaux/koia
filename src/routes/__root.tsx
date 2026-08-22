@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SITE_URL } from "@/lib/site";
 import { Header } from "@/components/koia/Header";
+import faviconAsset from "@/assets/koia-logo-navy.svg.asset.json";
 
 
 function NotFoundComponent() {
