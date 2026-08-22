@@ -1,4 +1,5 @@
-const bebas = { fontFamily: "'Bebas Neue', sans-serif" } as const;
+import logoAsset from "@/assets/koia-logo-navy.svg.asset.json";
+
 
 
 export function Header() {
@@ -22,22 +23,14 @@ export function Header() {
       <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4">
         <button
           onClick={scrollToTop}
-          className="cursor-pointer text-2xl uppercase transition-opacity duration-200 hover:opacity-80"
-          style={{ ...bebas, letterSpacing: "0.02em", lineHeight: 1 }}
+          className="cursor-pointer transition-opacity duration-200 hover:opacity-80"
           aria-label="Retour en haut de page"
         >
-          <span className="text-[#EEF0F8]">KO</span>
-          <span
-            className="text-transparent"
-            style={{
-              backgroundImage:
-                "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-            }}
-          >
-            IA
-          </span>
+          <img
+            src={logoAsset.url}
+            alt="KOIA"
+            className="h-7 w-auto"
+          />
         </button>
 
         <div className="flex items-center gap-4">
