@@ -7,7 +7,7 @@ import { frContent } from "@/content/fr";
 import type { Content } from "@/content/fr";
 
 // Source unique des questions/réponses : utilisée par l'accordéon et le JSON-LD FAQPage.
-const faqs = frContent.faq.items;
+const faqs: { q: string; a: string }[] = [...frContent.faq.items];
 
 function buildFaqJsonLd() {
   return {
