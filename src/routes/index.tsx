@@ -299,7 +299,7 @@ function ProgrammeSection({ content }: { content: Content }) {
                   fontFamily: "Inter, sans-serif",
                   fontWeight: 300,
                   fontSize: "0.75rem",
-                  color: "#8A96B0",
+                  color: "var(--text-secondary)",
                 }}
               >
                 {content.programme.cardSubLabel}
@@ -334,7 +334,7 @@ function ProgrammeSection({ content }: { content: Content }) {
                         fontFamily: "Inter, sans-serif",
                         fontWeight: 300,
                         fontSize: "0.875rem",
-                        color: "#8A96B0",
+                        color: "var(--text-secondary)",
                       }}
                     >
                       {row.sets}
@@ -412,7 +412,7 @@ function ProgrammeSection({ content }: { content: Content }) {
                   fontWeight: 300,
                   fontSize: "0.75rem",
                   lineHeight: 1.5,
-                  color: "#8A96B0",
+                  color: "var(--text-secondary)",
                 }}
               >
                 {content.programme.coachNote}
@@ -482,7 +482,7 @@ function HeroHeadline({ content }: { content: Content }) {
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
     <div
-      className="text-xs font-medium uppercase text-[#6B7A99] mb-12"
+      className="text-xs font-medium uppercase text-[var(--text-secondary)] mb-12"
       style={{ letterSpacing: "0.2em" }}
     >
       {children}
@@ -607,9 +607,9 @@ function IPhoneMockup({ content }: { content: Content }) {
             {content.iPhone.statusBarTime}
           </span>
           <div className="flex items-center gap-1">
-            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#8A96B0" }} />
-            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#8A96B0" }} />
-            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#8A96B0" }} />
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--text-secondary)" }} />
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--text-secondary)" }} />
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--text-secondary)" }} />
           </div>
         </div>
 
@@ -651,7 +651,7 @@ function IPhoneMockup({ content }: { content: Content }) {
               {content.iPhone.chatHeaderName}
             </span>
             <span
-              className="flex items-center gap-1 text-[#8A96B0]"
+              className="flex items-center gap-1 text-[var(--text-secondary)]"
               style={{ fontFamily: "Inter, sans-serif", fontWeight: 300, fontSize: 10 }}
             >
               <span
@@ -732,7 +732,7 @@ function IPhoneMockup({ content }: { content: Content }) {
                   )}
                   <div
                     style={{
-                      background: isUser ? "#7A0012" : "#141E30",
+                      background: isUser ? "#7A0012" : "var(--surface-2)",
                       color: "var(--text-primary)",
                       borderRadius: isUser ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
                       padding: "8px 12px",
@@ -760,7 +760,7 @@ function IPhoneMockup({ content }: { content: Content }) {
                 <div
                   className="flex items-center gap-1"
                   style={{
-                    background: typingSide === "user" ? "#7A0012" : "#141E30",
+                    background: typingSide === "user" ? "#7A0012" : "var(--surface-2)",
                     borderRadius: typingSide === "user" ? "10px 10px 3px 10px" : "10px 10px 10px 3px",
                     padding: "8px 12px",
                   }}
@@ -772,7 +772,7 @@ function IPhoneMockup({ content }: { content: Content }) {
                       style={{
                         width: 4,
                         height: 4,
-                        background: "#8A96B0",
+                        background: "var(--text-secondary)",
                         animation: `koia-typing 1.2s ease-in-out ${d * 0.15}s infinite`,
                       }}
                     />
@@ -798,7 +798,7 @@ function IPhoneMockup({ content }: { content: Content }) {
               fontFamily: "Inter, sans-serif",
               fontWeight: 300,
               fontSize: 10,
-              color: "#6B7A99",
+              color: "var(--text-secondary)",
             }}
           >
             {content.iPhone.inputPlaceholder}
@@ -882,7 +882,7 @@ function PhoneFrame({
 }) {
   return (
     <div className="w-full max-w-[260px]">
-      <div className="mb-2 text-[10px] font-medium uppercase tracking-[0.18em] text-[#6B7A99]">
+      <div className="mb-2 text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--text-secondary)]">
         {label}
       </div>
       <div
@@ -936,7 +936,7 @@ function PhoneFrame({
         )}
         <div className="relative">{children}</div>
       </div>
-      <div className="mt-2 text-xs" style={{ color: variant === "on" ? "var(--text-primary)" : "#6B7A99" }}>
+      <div className="mt-2 text-xs" style={{ color: variant === "on" ? "var(--text-primary)" : "var(--text-secondary)" }}>
         {footer}
       </div>
     </div>
@@ -1021,7 +1021,7 @@ function DifferenceBlock1({ content }: { content: Content }) {
         >
           {block.title}
         </h3>
-        <p className="mt-4 font-light text-sm leading-relaxed text-[#8A96B0]">
+        <p className="mt-4 font-light text-sm leading-relaxed text-[var(--text-secondary)]">
           {block.body}
         </p>
         <div
@@ -1078,7 +1078,7 @@ function DifferenceBlock2({ content }: { content: Content }) {
         >
           {block.title}
         </h3>
-        <p className="mt-3 font-light text-sm leading-relaxed text-[#8A96B0] max-w-[400px]">
+        <p className="mt-3 font-light text-sm leading-relaxed text-[var(--text-secondary)] max-w-[400px]">
           {block.body}
         </p>
         <div className="mt-5 flex flex-wrap gap-2">
@@ -1125,7 +1125,7 @@ function DifferenceBlock3({ content }: { content: Content }) {
             >
               {block.title}
             </h3>
-            <p className="mt-3 font-light text-sm leading-relaxed text-[#8A96B0]">
+            <p className="mt-3 font-light text-sm leading-relaxed text-[var(--text-secondary)]">
               {block.body}
             </p>
           </div>
@@ -1270,13 +1270,13 @@ export function LandingPage({ content }: { content: Content }) {
             {/* Left: text + form */}
             <div className="text-left max-md:text-center">
               <HeroHeadline content={content} />
-              <p className="mt-6 font-light text-lg text-[#8A96B0] animate-[fade-in_600ms_ease-out_1200ms_both]">
+              <p className="mt-6 font-light text-lg text-[var(--text-secondary)] animate-[fade-in_600ms_ease-out_1200ms_both]">
                 {content.hero.subtitle}
               </p>
               <div className="mt-10 animate-[fade-in_600ms_ease-out_1400ms_both] max-md:flex max-md:justify-center">
                 <EmailWaitlistForm idPrefix="hero" />
               </div>
-              <p className="mt-4 text-xs font-light text-[#6B7A99] animate-[fade-in_600ms_ease-out_1600ms_both]">
+              <p className="mt-4 text-xs font-light text-[var(--text-secondary)] animate-[fade-in_600ms_ease-out_1600ms_both]">
                 {content.hero.formNote}
               </p>
             </div>
@@ -1341,7 +1341,7 @@ export function LandingPage({ content }: { content: Content }) {
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-[var(--text-primary)]">{p.title}</h3>
-                  <p className="mt-2 font-light text-base leading-relaxed text-[#8A96B0] max-w-[720px]">
+                  <p className="mt-2 font-light text-base leading-relaxed text-[var(--text-secondary)] max-w-[720px]">
                     {p.text}
                   </p>
                 </div>
@@ -1451,7 +1451,7 @@ export function LandingPage({ content }: { content: Content }) {
             </div>
           </RevealOnScroll>
           <RevealOnScroll delay={200}>
-            <p className="mt-4 text-xs font-light text-[#6B7A99]">
+            <p className="mt-4 text-xs font-light text-[var(--text-secondary)]">
               {content.finalCta.formNote}
             </p>
           </RevealOnScroll>
@@ -1460,7 +1460,7 @@ export function LandingPage({ content }: { content: Content }) {
 
       {/* FOOTER */}
       <footer className="koia-section-divider">
-        <div className="mx-auto max-w-[1200px] px-6 py-12 text-center text-xs font-light text-[#6B7A99]">
+        <div className="mx-auto max-w-[1200px] px-6 py-12 text-center text-xs font-light text-[var(--text-secondary)]">
           {content.footer.copyright}
         </div>
       </footer>
