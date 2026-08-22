@@ -1,4 +1,5 @@
-import { bebas } from "@/lib/site";
+const bebas = { fontFamily: "'Bebas Neue', sans-serif" } as const;
+
 
 export function Header() {
   const scrollToTop = () => {
