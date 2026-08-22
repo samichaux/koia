@@ -25,13 +25,13 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
   }, []);
 
   return (
-    <div ref={listRef} className="border-t border-[#1E2A40]">
+    <div ref={listRef} className="border-t border-[var(--border)]">
       {items.map((item, i) => {
         const isOpen = open === i;
         return (
           <div
             key={i}
-            className="border-b border-[#1E2A40]"
+            className="border-b border-[var(--border)]"
             style={{
               opacity: visible ? 1 : 0,
               transform: visible ? "translateX(0)" : "translateX(20px)",
@@ -45,7 +45,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
                 onClick={() => setOpen(isOpen ? null : i)}
                 className="flex w-full items-center justify-between gap-6 py-6 text-left group"
               >
-                <span className="font-normal text-base text-[#EEF0F8]">
+                <span className="font-normal text-base text-[var(--text-primary)]">
                   {item.q}
                 </span>
                 <span
@@ -54,7 +54,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
                     isOpen ? "rotate-45" : ""
                   }`}
                   style={{
-                    color: isOpen ? "#C2001E" : "#6B7A99",
+                    color: isOpen ? "#C2001E" : "var(--text-secondary)",
                     transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
                   }}
                 >
@@ -71,7 +71,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
               style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
             >
               <div className="min-h-0">
-                <p className="max-w-[680px] font-light leading-relaxed text-base text-[#8A96B0]">
+                <p className="max-w-[680px] font-light leading-relaxed text-base text-[var(--text-secondary)]">
                   {item.a}
                 </p>
               </div>
