@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     q: "Pourquoi ne pas utiliser ChatGPT pour mon programme ?",
-    a: "Tu peux, mais sans le bon prompt, ChatGPT généralise — il ignore ta morphologie, tes blessures, ton cycle. KOIA intègre un system prompt expert : onboarding structuré, gestion des blessures, adaptation hormonale, protocole RPE. Tu parles normalement, le coaching est intégré.",
+    a: "Tu peux, mais ChatGPT te donne une réponse générique : il ne connaît pas ta morphologie, tes blessures passées, ni ton cycle. KOIA pose les bonnes questions et adapte ton programme en temps réel — gestion des blessures, équilibre hormonal, effort ciblé. Tu parles normalement, le coaching est intégré.",
   },
   {
     q: "En quoi l'IA de KOIA est différente des autres apps ?",
@@ -1367,7 +1367,7 @@ function Index() {
             <div className="text-left max-md:text-center">
               <HeroHeadline />
               <p className="mt-6 font-light text-lg text-[#8A96B0] animate-[fade-in_600ms_ease-out_1200ms_both]">
-                Tu n'as pas besoin de savoir prompter pour avoir un vrai coach.
+                Tu parles comme à un vrai coach. KOIA construit ton plan et l'adapte chaque semaine.
               </p>
               <div className="mt-10 animate-[fade-in_600ms_ease-out_1400ms_both] max-md:flex max-md:justify-center">
                 <EmailWaitlistForm idPrefix="hero" />
