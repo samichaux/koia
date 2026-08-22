@@ -70,7 +70,7 @@ const en = {
           { side: "user", text: "my right knee hurts" },
           {
             side: "ai",
-            text: "Swapping the Bulgarian split squat for hip thrusts. RPE 6 today. If it keeps hurting → get it checked.",
+            text: "Swapping the Bulgarian split squat for hip thrusts. Effort 6/10 today. If it keeps hurting → get it checked.",
           },
         ],
       },
@@ -79,8 +79,8 @@ const en = {
       title: "Transparent reasoning",
       body: "Every exercise is chosen for a reason. KOIA tells you why, and how strong the evidence is.",
       pills: [
-        { t: "Meta-analysis ✓", dim: false },
-        { t: "RCT study ✓", dim: false },
+        { t: "Scientific evidence ✓", dim: false },
+        { t: "Clinical trials ✓", dim: false },
         { t: "Expert consensus ✓", dim: true },
       ],
     },
@@ -101,11 +101,11 @@ const en = {
     cardLabel: "FULL BODY A",
     cardSubLabel: "Week 3 · Recomp",
     rows: [
-      { name: "Hip Thrust", sets: "4×10", rpe: "RPE 8" },
-      { name: "T-bar Row", sets: "4×10", rpe: "RPE 7" },
-      { name: "Bulgarian Split Squat", sets: "3×12", rpe: "RPE 7" },
-      { name: "Reverse Pec Deck", sets: "3×15", rpe: "RPE 6" },
-      { name: "Hip Abduction Machine", sets: "3×15", rpe: "RPE 6" },
+      { name: "Hip Thrust", sets: "4×10", rpe: "Effort 8/10" },
+      { name: "T-bar Row", sets: "4×10", rpe: "Effort 7/10" },
+      { name: "Bulgarian Split Squat", sets: "3×12", rpe: "Effort 7/10" },
+      { name: "Reverse Pec Deck", sets: "3×15", rpe: "Effort 6/10" },
+      { name: "Hip Abduction Machine", sets: "3×15", rpe: "Effort 6/10" },
     ],
     coachNote:
       "Hip thrust first — we hit the glutes while you're still fresh. The row is chest-supported to protect your lower back.",
@@ -117,7 +117,7 @@ const en = {
       "Zero diet culture · Nothing to sell you",
       "Built by an athlete · 10 years of training",
       "Based on Schoenfeld, Morton, Helms, Contreras",
-      "RPE protocol backed by research",
+      "Effort tracking backed by research",
     ],
   },
 
