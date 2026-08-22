@@ -479,36 +479,6 @@ const credibility = [
   "Zéro diet culture · Zéro complément vendu",
 ];
 
-const faqs = [
-  {
-    q: "KOIA est-elle une app de musculation ou de fitness ?",
-    a: "Les deux. KOIA génère des programmes adaptés à tes objectifs — prise de muscle, perte de gras, condition physique. Le coach IA s'adapte à ton niveau et ton équipement.",
-  },
-  {
-    q: "Pourquoi ne pas utiliser ChatGPT pour mon programme ?",
-    a: "Tu peux, mais sans le bon prompt, ChatGPT généralise — il ignore ta morphologie, tes blessures, ton cycle. KOIA intègre un system prompt expert : onboarding structuré, gestion des blessures, adaptation hormonale, protocole RPE. Tu parles normalement, le coaching est intégré.",
-  },
-  {
-    q: "En quoi l'IA de KOIA est différente des autres apps ?",
-    a: "La plupart des apps utilisent un quiz pour générer un programme statique. KOIA utilise un agent conversationnel qui comprend ton contexte, s'adapte semaine après semaine, et t'explique chaque choix.",
-  },
-  {
-    q: "KOIA propose-t-elle un suivi nutritionnel ?",
-    a: "Oui. Tu décris tes repas, KOIA les analyse avec des données vérifiées. Pas de comptage obsessionnel — un suivi basé sur les portions et tes objectifs protéiques.",
-  },
-  {
-    q: "KOIA est-elle adaptée aux femmes ?",
-    a: "KOIA est conçue pour tout le monde. Le coach prend en compte les spécificités morphologiques et hormonales de chaque profil, y compris l'adaptation au cycle menstruel.",
-  },
-  {
-    q: "Combien coûtera KOIA ?",
-    a: "Le pricing sera annoncé au lancement. Les membres de la bêta privée bénéficieront de conditions préférentielles.",
-  },
-  {
-    q: "Quand KOIA sera-t-elle disponible ?",
-    a: "KOIA est en développement. Rejoins la bêta pour tester en avant-première et influencer le produit.",
-  },
-];
 
 function HeroHeadline() {
   const words = [
