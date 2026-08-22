@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     q: "Pourquoi ne pas utiliser ChatGPT pour mon programme ?",
-    a: "Tu peux, mais ChatGPT te donne une réponse générique : il ne connaît pas ta morphologie, tes blessures passées, ni ton cycle. KOIA pose les bonnes questions et adapte ton programme en temps réel — gestion des blessures, équilibre hormonal, effort ciblé. Tu parles normalement, le coaching est intégré.",
+    a: "Tu peux, et le premier programme peut même être bon. Le problème arrive à la semaine 3 : ChatGPT ne se souvient pas de ta séance précédente, ni de si tu as eu mal quelque part. Tu dois tout retaper à chaque fois. KOIA garde le fil et ajuste sans que tu aies à réexpliquer.",
   },
   {
     q: "En quoi l'IA de KOIA est différente des autres apps ?",
@@ -468,16 +468,17 @@ const problems = [
   {
     n: "03",
     title: "Personne ne te dit pourquoi.",
-    text: "Pourquoi cet exercice et pas un autre ? Pourquoi 4 séries et pas 3 ? Ni ChatGPT ni les apps ne t'expliquent le raisonnement. Tu exécutes sans comprendre.",
+    text: "Pourquoi cet exercice et pas un autre ? Pourquoi 4 séries et pas 3 ? Ni ChatGPT ni les apps ne t'expliquent le raisonnement — chez KOIA, chaque choix a une réponse que tu peux lire quand tu veux la lire.",
   },
 ];
 
 const credibility = [
-  "System prompt conçu par une athlète · 10 ans de pratique",
+  "Zéro diet culture · Rien à te vendre",
+  "Conçu par une athlète · 10 ans de pratique",
   "Basé sur Schoenfeld, Morton, Helms, Contreras",
   "Protocole RPE validé par la recherche",
-  "Zéro diet culture · Zéro complément vendu",
 ];
+
 
 
 function HeroHeadline() {
@@ -1117,8 +1118,7 @@ function DifferenceBlock1() {
           L'IA, mais bien promptée
         </h3>
         <p className="mt-4 font-light text-sm leading-relaxed text-[#8A96B0]">
-          KOIA est un agent IA avec un system prompt de coaching expert. Tu parles normalement,
-          le coaching est intégré — onboarding, blessures, morphologie, protocole RPE.
+          KOIA ne repart pas de zéro à chaque message. Il retient tes séances, tes douleurs, ta progression — et ajuste, semaine après semaine, sans que tu aies à tout rappeler.
         </p>
         <div
           className="mt-6 pl-3"
