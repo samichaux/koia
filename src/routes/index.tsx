@@ -1339,7 +1339,8 @@ function Index() {
           src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=70&auto=format&fit=crop"
           alt=""
           aria-hidden
-          loading="lazy"
+          loading="eager"
+          fetchPriority="high"
           className="absolute inset-0 h-full w-full object-cover"
           style={{ filter: "saturate(0.4) brightness(0.7)", zIndex: 0 }}
         />
