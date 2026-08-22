@@ -46,7 +46,7 @@ export function Header() {
                 "linear-gradient(135deg, #FF2D4B 0%, #C2001E 40%, #7A0012 100%)",
             }}
           >
-            Rejoindre la bêta
+            Je m'inscris
           </button>
         </div>
       </div>
