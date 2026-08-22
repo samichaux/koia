@@ -22,9 +22,10 @@ html {
   scroll-behavior: smooth;
 }
 
+
 body {
-  background-color: #04070F;
-  color: #EEF0F8;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
   font-family: "Inter", "DM Sans", ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -323,4 +324,29 @@ body::before {
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+/* Theme tokens (declared last so they win over the shadcn defaults above) */
+:root {
+  --bg-page: #04070F;
+  --bg-app: #070C17;
+  --surface: #0E1525;
+  --surface-2: #141D30;
+  --border: #1E2A40;
+  --text-primary: #EEF0F8;
+  --text-secondary: #4A5872;
+  --accent: #C2001E;
+  --accent-hover: #FF2D3A;
+}
+
+[data-theme="light"] {
+  --bg-page: #E6E0D6;
+  --bg-app: #F3EDE3;
+  --surface: #FFFFFF;
+  --surface-2: #FFFFFF;
+  --border: #E0D8C8;
+  --text-primary: #04070F;
+  --text-secondary: #6B7280;
+  --accent: #C2001E;
+  --accent-hover: #FF2D3A;
 }

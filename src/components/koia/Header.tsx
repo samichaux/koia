@@ -17,7 +17,7 @@ export function Header() {
 
   return (
     <header
-      className="sticky top-0 z-50 border-b border-[#1E2A40] bg-[#04070F]/70 backdrop-blur-xl"
+      className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg-page)]/70 backdrop-blur-xl"
       style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
     >
       <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4">
