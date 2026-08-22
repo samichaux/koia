@@ -93,6 +93,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      // NOTE: visuel temporaire 1200x630 généré dans public/og-image.jpg.
+      // Remplacer par un asset dédié (photographie + typographie) dès qu'un vrai visuel de partage est créé.
+      { property: "og:image", content: `${SITE_URL}/og-image.jpg` },
+      { name: "twitter:image", content: `${SITE_URL}/og-image.jpg` },
     ],
     links: [
       {
