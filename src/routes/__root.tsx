@@ -94,6 +94,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Programmes personnalisés. Raisonnement transparent. Zéro bullshit. Rejoins la bêta privée de KOIA.",
       },
       { property: "og:type", content: "website" },
+      { name: "theme-color", content: "#04070F" },
       { name: "twitter:card", content: "summary_large_image" },
       // NOTE: visuel temporaire 1200x630 généré dans public/og-image.jpg.
       // Remplacer par un asset dédié (photographie + typographie) dès qu'un vrai visuel de partage est créé.
@@ -106,6 +107,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "canonical", href: `${SITE_URL}/` },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
