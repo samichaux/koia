@@ -68,7 +68,7 @@ export const frContent = {
           { side: "user", text: "j'ai mal au genou droit" },
           {
             side: "ai",
-            text: "Je remplace le squat bulgare par du hip thrust. RPE 6 aujourd'hui. Si ça persiste → consulte.",
+            text: "Je remplace le squat bulgare par du hip thrust. Effort 6/10 aujourd'hui. Si ça persiste → consulte.",
           },
         ],
       },
@@ -77,9 +77,9 @@ export const frContent = {
       title: "Raisonnement transparent",
       body: "Chaque exercice est choisi pour une raison. KOIA t'explique pourquoi, avec le niveau de preuve.",
       pills: [
-        { t: "Méta-analyse ✓", dim: false },
-        { t: "Étude RCT ✓", dim: false },
-        { t: "Consensus expert ✓", dim: true },
+        { t: "Preuves scientifiques ✓", dim: false },
+        { t: "Essais cliniques ✓", dim: false },
+        { t: "Consensus d'experts ✓", dim: true },
       ],
     },
     block3: {
@@ -99,11 +99,11 @@ export const frContent = {
     cardLabel: "FULL BODY A",
     cardSubLabel: "Semaine 3 · Recomp",
     rows: [
-      { name: "Hip Thrust", sets: "4×10", rpe: "RPE 8" },
-      { name: "Rowing T-bar", sets: "4×10", rpe: "RPE 7" },
-      { name: "Squat Bulgare", sets: "3×12", rpe: "RPE 7" },
-      { name: "Reverse Pec Deck", sets: "3×15", rpe: "RPE 6" },
-      { name: "Abduction machine", sets: "3×15", rpe: "RPE 6" },
+      { name: "Hip Thrust", sets: "4×10", rpe: "Effort 8/10" },
+      { name: "Rowing T-bar", sets: "4×10", rpe: "Effort 7/10" },
+      { name: "Squat Bulgare", sets: "3×12", rpe: "Effort 7/10" },
+      { name: "Reverse Pec Deck", sets: "3×15", rpe: "Effort 6/10" },
+      { name: "Abduction machine", sets: "3×15", rpe: "Effort 6/10" },
     ],
     coachNote:
       "Hip thrust en premier — on cible les fessiers quand tu es encore fraîche. Le rowing est chest-supported pour protéger le bas du dos.",
@@ -115,7 +115,7 @@ export const frContent = {
       "Zéro diet culture · Rien à te vendre",
       "Conçu par une athlète · 10 ans de pratique",
       "Basé sur Schoenfeld, Morton, Helms, Contreras",
-      "Protocole RPE validé par la recherche",
+      "Suivi de l'effort ressenti, validé par la recherche",
     ],
   },
 
