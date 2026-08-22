@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://[REMPLACER PAR LE DOMAINE FINAL]/sitemap.xml
+Sitemap: https://koia.be/sitemap.xml
