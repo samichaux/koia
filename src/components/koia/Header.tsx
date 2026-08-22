@@ -1,8 +1,13 @@
 import logoAsset from "@/assets/koia-logo-navy.svg.asset.json";
-
-
+import { useTheme } from "@/hooks/use-theme";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { Moon, Sun } from "lucide-react";
 
 export function Header() {
+  const { theme, toggleTheme } = useTheme();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const currentLang = pathname.startsWith("/en") ? "en" : "fr";
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -34,8 +39,47 @@ export function Header() {
         </button>
 
         <div className="flex items-center gap-4">
-          {/* Espace réservé pour le futur sélecteur de langue et de thème */}
-          <div className="hidden items-center gap-2 sm:flex" />
+          <div className="hidden items-center gap-2 sm:flex">
+            <div className="flex items-center gap-1 text-xs font-medium uppercase tracking-wider">
+              <Link
+                to="/"
+                className="rounded px-2 py-1 transition-colors"
+                style={{
+                  color:
+                    currentLang === "fr"
+                      ? "var(--text-primary)"
+                      : "var(--text-secondary)",
+                }}
+              >
+                FR
+              </Link>
+              <span style={{ color: "var(--text-muted)" }}>·</span>
+              <Link
+                to="/en"
+                className="rounded px-2 py-1 transition-colors"
+                style={{
+                  color:
+                    currentLang === "en"
+                      ? "var(--text-primary)"
+                      : "var(--text-secondary)",
+                }}
+              >
+                EN
+              </Link>
+            </div>
+
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label={
+                theme === "dark" ? "Passer au mode clair" : "Passer au mode sombre"
+              }
+              className="flex h-8 w-8 items-center justify-center rounded-md border border-[var(--border)] transition-colors hover:border-[var(--text-secondary)]"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
+          </div>
 
           <button
             type="button"
