@@ -21,7 +21,7 @@ export function EmailWaitlistForm({
     } catch {}
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const input = inputRef.current;
     if (!input) return;
     if (!input.checkValidity()) {
@@ -30,6 +30,17 @@ export function EmailWaitlistForm({
       return;
     }
     const email = input.value.trim().toLowerCase();
+
+    const { error: insertError } = await supabase
+      .from("waitlist_emails")
+      .insert({ email, source: idPrefix });
+
+    // 23505 = unique violation → l'email est déjà inscrit, donc c'est un succès côté UX.
+    if (insertError && insertError.code !== "23505") {
+      setError("Oups, une erreur est survenue. Réessaie dans un instant.");
+      return;
+    }
+
     try {
       localStorage.setItem(STORAGE_KEY, email);
     } catch {}
