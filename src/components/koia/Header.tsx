@@ -29,7 +29,7 @@ export function Header() {
           <img
             src={logoAsset.url}
             alt="KOIA"
-            className="h-10 w-auto"
+            className="h-12 w-auto"
           />
         </button>
 
